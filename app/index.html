@@ -24,7 +24,7 @@
 
       <form class="form-search">
         <div class="input-append">
-          <input type="text" class="span3 search-query">
+          <input type="text" class="span3 search-query" maxlength="10" >
           <button type="submit" class="btn btn-primary">Найти</button>
         </div>
       </form>
@@ -50,24 +50,63 @@
             <a href="#">&larr; Назад</a>
           </li>
         </ul>
-
         <ul class="breadcrumb">
           <li><a href="#">Home</a> <span class="divider">/</span></li>
           <li><a href="#">Folder 1</a> <span class="divider">/</span></li>
           <li class="active">Folder 2</li>
         </ul>
-      
         <ul class="pager">
           <li>
-            <a href="#">Вперед &rarr;</a>
+            <a href="#">Add folder <b>+</b> </a>
           </li>
         </ul>
         <div class="clear"></div>
+
+        <div class="main">
+          <button class="btn span2 folder" type="button">Folder</button>
+          <button class="btn span2 folder" type="button">Folder</button>
+          <button class="btn span2 folder" type="button">Folder</button>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+          <div class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> 9378239123.jpg </a></div>
+        </div>
       </div>
     </div>
 
+    <div class="right_column">
+      <div class="well">
+        <div class="description">
+          <div class="span3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /></a></div>
+          <div class="title">930523534.jpg</div>
+          <div class='definition'>Add date:</div>
+          <div>2013-09-23 13:22:59 +0300</div>
+          <button class="btn btn-large btn-block btn-primary" type="button">Download</button>
+        </div>
+      </div>
+    </div>
 
-
+  <div class="clear"></div>
+  <button class="btn btn-large btn-primary" type="button">Load from JSON</button>
+  <button class="btn btn-large btn-primary" type="button">Export to JSON</button>
+  <div class="clear"></div>
+  <textarea class="text_area" rows="4" placeholder='Dropdown with textarea for import/export of JSON folders structure'></textarea>
 
   <script src="lib/angular/angular.js"></script>
   <script src="js/app.js"></script>

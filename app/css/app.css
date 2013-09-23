@@ -15,8 +15,68 @@ body {
   float: left;
 }
 
+.pager li a b {
+  font-weight: bolder;
+  font-size: 17px;
+}
+
 .breadcrumb {
   float: left;
   margin: 18px 0 0 5px;
   display: inline-block;
+}
+
+
+
+/* MAIN */
+.main {
+  width: 670px;
+  height: 500px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  border: 1px solid #e3e3e3;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.main a {
+  text-align: center;
+}
+.main .span2 {
+  margin-bottom: 10px;
+}
+
+.main .folder {
+  height: 160px;
+}
+
+
+.right_column {
+  float: left;
+  margin-left: 15px;
+  width: 305px;
+}
+
+.description {
+  height: 555px;
+  padding-top: 40px;
+  text-align: center;
+}
+.title {
+  font-size: 20px;
+  font-weight: bolder;
+  display: inline-block;
+  margin-top: 20px;
+}
+.definition {
+  margin-top: 15px;
+}
+
+.description button {
+  margin-top: 40px;
+}
+
+.text_area {
+  margin-top: 10px;
+  width: 333px;
 }
