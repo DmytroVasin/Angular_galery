@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/carusel_images.css">
     <link rel="stylesheet" href="css/app.css"/>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
   </head>
   <body>
+
   <!--   <ul class="menu">
       <li><a href="#/view1">view1</a></li>
       <li><a href="#/view2">view2</a></li>
@@ -18,7 +20,7 @@
 
     <div>Angular seed app: v<span app-version></span></div>
   -->
-
+    <div id="gmail"></div>
 
     <div class="well">
 
@@ -31,10 +33,10 @@
 
       <div class="carousel">
           <div class="row-fluid">
-            <div class="span3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /></a></div>
-            <div class="span3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /></a></div>
-            <div class="span3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /></a></div>
-            <div class="span3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /></a></div>
+            <div class="span3"><a href="#x" class="thumbnail"><img class='carousel_img_0' src="http://placehold.it/250x250" width='231px' alt="Image" /></a></div>
+            <div class="span3"><a href="#x" class="thumbnail"><img class='carousel_img_1' src="http://placehold.it/250x250" width='231px' alt="Image" /></a></div>
+            <div class="span3"><a href="#x" class="thumbnail"><img class='carousel_img_2' src="http://placehold.it/250x250" width='231px' alt="Image" /></a></div>
+            <div class="span3"><a href="#x" class="thumbnail"><img class='carousel_img_3' src="http://placehold.it/250x250" width='231px' alt="Image" /></a></div>
           </div>
 
         <a class="left carousel-control" href="#" data-slide="prev">‹</a>
@@ -114,5 +116,9 @@
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
+  <script src="js/carusel.js"></script>
+  <script type="text/javascript">
+    getPicture('birds',2);
+  </script>
   </body>
 </html>
