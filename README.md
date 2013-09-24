@@ -1,8 +1,3 @@
-## How to use angular-seed
-
-Clone the angular-seed repository and start hacking...
-
-
 ### Running the app during development
 
 You can pick one of these options:
