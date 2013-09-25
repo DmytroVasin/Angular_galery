@@ -1,1 +1,23 @@
-<h1>{{query}}</h1>
+<div class="carousel">
+  <div class="row-fluid">
+
+
+    <div ng-repeat="photo in photos" class="span3">
+      <a href="#" class="thumbnail">
+        <img class='carousel_img_$index' ng-src="{{photo}}" width='231px' alt="Image" />
+      </a>
+    </div>
+
+
+
+
+        <!-- <div class="span3"><a href="#" class="thumbnail"><img class='carousel_img_0' src="http://placehold.it/250x250" width='231px' alt="Image" /></a></div>
+        <div class="span3"><a href="#" class="thumbnail"><img class='carousel_img_1' src="http://placehold.it/250x250" width='231px' alt="Image" /></a></div>
+        <div class="span3"><a href="#" class="thumbnail"><img class='carousel_img_2' src="http://placehold.it/250x250" width='231px' alt="Image" /></a></div>
+        <div class="span3"><a href="#" class="thumbnail"><img class='carousel_img_3' src="http://placehold.it/250x250" width='231px' alt="Image" /></a></div>
+      </div> -->
+
+    <a class="left carousel-control" href="#" data-slide="prev">‹</a>
+    <a class="right carousel-control" href="#" data-slide="next">›</a>
+  </div>
+</div>
