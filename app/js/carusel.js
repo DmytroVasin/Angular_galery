@@ -1,5 +1,5 @@
 function getPicture(query, page){
-		var apiKey = 'fd3e8e3d32dd0534ed29da7f9404bd2e'; // replace this with your API key
+		var apiKey = '51d0037db1691ef6163859f7f265e0ae'; // angular_galery_app ( this is key ) => ( secret is 741e9bc074f26180)
 		query = query || "birds";
     page  = page  || 1
 
@@ -8,7 +8,7 @@ function getPicture(query, page){
 			{
 				method: 'flickr.photos.search',
 				api_key: apiKey,
-				tags: query,
+				text: query,
 				format: 'json',
 				nojsoncallback: 1,
 				per_page: 4,
