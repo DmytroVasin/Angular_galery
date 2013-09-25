@@ -10,7 +10,7 @@ angular.module('myApp.controllers', []).
 
   }])
   .controller('MyCtrl_galery', ['$scope', '$routeParams', 'carusel', function($scope, $routeParams, carusel) {
-    $scope.query = carusel.getPicture('birds',2);
+    $scope.query = carusel.getPicture('girls',2);
     
     // $scope.item = 'some item'
     //$scope.setImage = function(imageUrl) {

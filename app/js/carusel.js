@@ -15,7 +15,7 @@ function getPicture(query, page){
 				page: page
 			},
 			function(data){
-				console.log(data);
+				// console.log(data);
 				if(data.stat == 'ok'){
 					if(data.photos.pages != 0) {
 						$.each( data.photos.photo, function( i, item ) {
