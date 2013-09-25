@@ -37,4 +37,15 @@ angular.module('Galery.services', ['ngResource'])
     return {
       getPicture: getPicture
     };
+  })
+  .factory('Finder', function() {
+    var factory = {};
+    factory.active = LocalStorage.get(active) || 0  // into LocalStorage
+    factory.add = function(file){
+      console.log(file);
+    };
+    factory.setActive = function(id){
+      factory.active = id
+    }
+    return factory;
   });
