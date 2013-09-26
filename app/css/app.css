@@ -1,3 +1,9 @@
+/*  === ANGULAR-START === */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+/*  === ANGULAR-END === */
+
 body {
   width: 1150px;
   margin: 20px auto;
