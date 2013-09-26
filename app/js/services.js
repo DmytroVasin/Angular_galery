@@ -11,8 +11,6 @@ angular.module('Galery.services', ['ngResource'])
   })
   .factory('Photos', function($resource, $rootScope) {
     $rootScope.loader = false;
-
-    var Picture = $resource("http://api.flickr.com/services/rest/", params);
     var params = {
       api_key: '51d0037db1691ef6163859f7f265e0ae',
       method: 'flickr.photos.search',
@@ -21,6 +19,7 @@ angular.module('Galery.services', ['ngResource'])
       per_page: 4,
     };
 
+    var Picture = $resource("http://api.flickr.com/services/rest/", params);
 
     function getPicture(query, page){
       query = query || "girls";

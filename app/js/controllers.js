@@ -6,12 +6,10 @@ angular.module('Galery.controllers', [])
   .controller('GaleryCtrl', ['$scope', 'Photos', 'Finder',
                     function( $scope,   Photos,   Finder ) {
 
-    $scope.photos = ["http://placehold.it/250x250", "http://placehold.it/250x250", "http://placehold.it/250x250", "http://placehold.it/250x250"];
-    $scope.photos = Photos.getPicture('girls', 1).then(function (data) { $scope.photos = data; })
-
+    $scope.photos = Photos.getPicture('girls', 1);
     $scope.ajax_loading = false;
     $scope.current_page = 1;
-    $scope.isDisabled   = false;
+    $scope.isDisabled = false;
 
     $scope.searchPhotos = function(){
       $scope.ajax_loading = true;
@@ -23,6 +21,7 @@ angular.module('Galery.controllers', [])
     };
 
     $scope.rotateCarusel = function(direction){
+
       if (direction == 'right') {
         $scope.current_page += 1;
         $scope.searchPhotos();
