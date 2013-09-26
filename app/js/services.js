@@ -22,7 +22,7 @@ angular.module('Galery.services', ['ngResource'])
     var Picture = $resource("http://api.flickr.com/services/rest/", params);
 
     function getPicture(query, page){
-      query = query || "birds";
+      query = query || "girls";
       page  = page  || 1;
 
       return Picture.get({ text: query, page: page })

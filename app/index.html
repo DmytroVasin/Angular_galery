@@ -25,8 +25,8 @@
             <img class='carousel_img_$index' ng-src="{{photo}}" width='231px' alt="Image" />
           </a>
         </div>
-        <a class="left carousel-control" href="#" data-slide="prev">‹</a>
-        <a class="right carousel-control" href="#" data-slide="next">›</a>
+        <a ng-click="rotateCarusel('left')" disabled="{{isDisabled}}" ng-show="isDisabled" class="left carousel-control" href="#" data-slide="prev">‹</a>
+        <a ng-click="rotateCarusel('right')" class="right carousel-control" href="#" data-slide="next">›</a>
       </div>
     </div>
   </div>
