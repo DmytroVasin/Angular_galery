@@ -8,6 +8,8 @@ angular.module('Galery.controllers', [])
 
     var desctop = $scope.desctop = Storage.get()
 
+    console.log(desctop);
+
     if (desctop.length == 1) {
       var ids = 0;
       var parent_id = 0;
