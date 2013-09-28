@@ -1,11 +1,4 @@
 /*  === ANGULAR-START === */
-/*.isDisabled {
-  display: block;
-}
-
-.displ_none {
-  display: none;
-}*/
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
@@ -40,6 +33,14 @@ body {
   display: inline-block;
 }
 
+.breadcrumb li a {
+  text-decoration: none !important;
+}
+
+.breadcrumb li.active a {
+  color: #999;
+  cursor: default;
+}
 
 
 /* MAIN */
@@ -94,3 +95,10 @@ body {
   margin-top: 10px;
   width: 333px;
 }
+
+/* BREAD Crumb START*/
+.last_crumb {
+  color: #f5f5f5;
+}
+/* BREAD Crumb END*/
+

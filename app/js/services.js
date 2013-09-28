@@ -57,7 +57,7 @@ angular.module('Galery.services', ['ngResource'])
 
   return {
     get: function () {
-      return JSON.parse(localStorage.getItem(STORAGE_ID) || "[" + JSON.stringify({ id: 1, type: 'folder', parent: null, name: 'HOME' }) + "]");
+      return JSON.parse(localStorage.getItem(STORAGE_ID) || "[]");
     },
     put: function (todos) {
       localStorage.setItem(STORAGE_ID, JSON.stringify(todos));

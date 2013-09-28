@@ -21,7 +21,7 @@
     <div class="carousel">
       <div class="row-fluid">
         <div ng-repeat="photo in photos" class="span3">
-          <a href="#" class="thumbnail" ng-click='addToFolder(photo)'>
+          <a href="#" class="thumbnail" ng-click='addToFile(photo)'>
             <img class='carousel_img_$index' ng-src="{{photo}}" width='231px' alt="Image" />
           </a>
         </div>
@@ -58,20 +58,31 @@
         </li>
       </ul>
       <ul class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><span class="divider">/</span> <a href="#">Folder 1</a></li>
-        <li class="active"> <span class="divider">/</span> Folder 2</li>
+        <li><a ng-click='chageFolder(0)' href="#">Home</a></li>
+        <li ng-repeat="crumb in breadcrumbs" ng-class="{active: $last}" >
+          <span class='divider'>/</span><!-- &#9658; -->
+          <a ng-if="!$last" ng-click='chageFolder(crumb.id)' href="#">{{crumb.name}}</a>
+          <span ng-if="$last">{{crumb.name}}</span>
+        </li>
       </ul>
       <ul class="pager">
         <li>
-          <a href="#">Add folder <b>+</b> </a>
+          <a ng-click='addFolder()' href="#">Add folder <b>+</b></a>
         </li>
       </ul>
       <div class="clear"></div>
-
+<!--     <h1>{{parent_id}}</h1>
+    <h1>{{breadcrumbs}}</h1> -->
       <div class="main">
-        <button ng-repeat="file in desctop | filter:{ 'type':'folder'} track by $index" class="btn span2 folder" type="button">{{file.name}}</button>
-        <div ng-repeat="file in desctop | filter:{ 'type':'file'} track by $index" class="span2"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" /> {{ file.name }} </a></div>
+        <button ng-repeat="folder in desctop | filter:{ 'type':'folder', 'parent': parent_id } track by $index"
+                ng-click='chageFolder(folder.id)'
+                class="btn span2 folder" type="button">{{folder.name}}</button>
+
+        <div    ng-repeat="file in desctop | filter:{ 'type':'file',   'parent': parent_id } track by $index" class="span2">
+          <a href="#" class="thumbnail">
+            <img ng-src="{{file.src}}" alt="Image" /> {{ file.name }}
+          </a>
+        </div>
       </div>
     </div>
   </div>
