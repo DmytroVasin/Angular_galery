@@ -21,6 +21,7 @@ angular.module('Galery', ['Galery.controllers', 'Galery.services'])
 
 
 // [
+// 	{"id": 1,"type": "folder","parent": null,"name": "HOME"},
 // 	{"id":1, "type":"file", "parent":0, "name":"9979124636_b9259eff29", "src":"http://farm4.staticflickr.com/3809/9979124636_b9259eff29_q.jpg"},
 // 	{"id":2, "type":"file", "parent":0, "name":"9979135575_ae3db72761", "src":"http://farm4.staticflickr.com/3727/9979135575_ae3db72761_q.jpg"},
 // 	{"id":3, "type":"file", "parent":0, "name":"9979181376_1d21bf4b13", "src":"http://farm6.staticflickr.com/5324/9979181376_1d21bf4b13_q.jpg"},
