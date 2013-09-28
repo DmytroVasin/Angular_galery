@@ -10,7 +10,7 @@ angular.module('Galery.controllers', [])
 
     console.log(desctop);
 
-    if (desctop.length == 1) {
+    if (desctop.length == 0) {
       var ids = 0;
       var parent_id = 0;
       // var parent_id = 0;
@@ -22,7 +22,8 @@ angular.module('Galery.controllers', [])
     $scope.isDisabled = false;
 
     function splitation(name){
-      return name.split('/').slice(-1)[0].split('.')[0].slice(0, -2);
+      // return name.split('/').slice(-1)[0].split('.')[0].slice(0, -2);
+      return name.split('/').slice(-1)[0].split('.')[0].split('_')[0];
     }
 
 
