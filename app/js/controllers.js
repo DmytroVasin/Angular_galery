@@ -134,6 +134,7 @@ angular.module('Galery.controllers', [])
     function saveAll(){
       Storage.put($scope.desctop);
     };
+
     function closeEditingFolder(){
       angular.forEach($scope.desctop, function(v, k){
         if (v.type === 'folder'){
@@ -146,9 +147,25 @@ angular.module('Galery.controllers', [])
     $scope.removeFile = function(file){
       $scope.desctop.splice($scope.desctop.indexOf(file), 1);
       saveAll();
-    }
+    };
+
     $scope.removeFolder = function(folder){
-      console.log(folder);
-    }
+      $scope.desctop = concl(folder.id, $scope.desctop).filter( function(item){
+        if (item.id !== '0' && item.id !== folder.id ){ return item; }
+      });
+      saveAll();
+    };
+
+    function concl(id_s, arr){
+      angular.forEach(arr, function(v,k){
+        if (v.parent === id_s){
+          concl(v.id, arr);
+          v.id = '0';
+        }
+      });
+      return arr;
+    };
+
+
 
   }]);
