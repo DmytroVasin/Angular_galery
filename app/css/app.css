@@ -102,10 +102,11 @@ body {
 .img_in_folder {
   height: 154px;
 }
+
 .img_in_folder div {
   float: left;
   margin-top: 4px;
-  margin-left: 21px;
+  margin-left: 17px;
 }
 .delete_img {
  float: right;

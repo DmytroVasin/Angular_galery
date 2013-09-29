@@ -15,6 +15,7 @@ angular.module('Galery.controllers', [])
 
     var parent_id   = $scope.parent_id   = parseInt(localStorage.getItem('parent_id'), 10);
     var current_id  = $scope.current_id  = parseInt(localStorage.getItem('current_id'), 10);
+                      $scope.openedImage = JSON.parse(localStorage.getItem('opened_image'));
 
     $scope.photos = Photos.getPicture('girls', 1);
     $scope.current_page = 1;
@@ -173,6 +174,8 @@ angular.module('Galery.controllers', [])
       return arr;
     };
 
-
-
+    $scope.showImage = function(file){
+      localStorage.setItem('opened_image', JSON.stringify(file));
+      $scope.openedImage = file;
+    };
   }]);
