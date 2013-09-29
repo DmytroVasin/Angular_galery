@@ -45,8 +45,8 @@ body {
 
 /* MAIN */
 .main {
-  width: 670px;
-  height: 500px;
+  width: 664px;
+  height: 510px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin: 0 auto;
@@ -54,17 +54,67 @@ body {
   overflow: auto;
   overflow-x: hidden;
 }
+
 .main a {
   text-align: center;
 }
+
 .main .span2 {
   margin-bottom: 10px;
 }
 
-.main .folder {
+.btn_folder {
   height: 160px;
 }
 
+/* EDITING HTML*/
+.btn_folder {
+  float: left;
+  height: 150px;
+  width: 130px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.name_wrapper {
+  margin-left: 38px;
+  margin-top: 52px;
+}
+
+.name {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bolder;
+  margin-right: 4px;
+  margin-top: 2px;
+}
+.btn-warning {
+  margin-left: 9px;
+}
+/*.btn-mini {*/
+  /*float: left;*/
+/*}*/
+
+.img_in_folder {
+  height: 154px;
+}
+.img_in_folder div {
+  float: left;
+  margin-top: 4px;
+  margin-left: 21px;
+}
+.delete_img {
+ float: right;
+ margin-top: 3px;
+}
+
+/* EDITING HTML*/
+
+
+/*
+.main .folder {
+}
+*/
 
 .right_column {
   float: left;
@@ -73,10 +123,11 @@ body {
 }
 
 .description {
-  height: 555px;
+  height: 565px;
   padding-top: 40px;
   text-align: center;
 }
+
 .title {
   font-size: 20px;
   font-weight: bolder;

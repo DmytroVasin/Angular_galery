@@ -74,13 +74,21 @@
 <!--     <h1>{{parent_id}}</h1>
     <h1>{{breadcrumbs}}</h1> -->
       <div class="main">
-        <button ng-repeat="folder in desctop | filter:{ 'type':'folder', 'parent': parent_id } track by $index"
+        <div ng-repeat="folder in desctop | filter:{ 'type':'folder', 'parent': parent_id } track by $index"
                 ng-click='chageFolder(folder.id)'
-                class="btn span2 folder" type="button">{{folder.name}}</button>
+                class="btn_folder thumbnail" type="button">
+                <div class='name_wrapper'>
+                  <div class="name">{{folder.name}}</div>
+                  <button ng-click="consoleLog(); $event.stopPropagation();" class="btn btn-mini btn-warning" type="button"> # </button>
+                  <button ng-click="consoleLog(); $event.stopPropagation();" class="btn btn-mini btn-danger" type="button"> # </button>
+                </div>
+        </div>
 
-        <div    ng-repeat="file in desctop | filter:{ 'type':'file',   'parent': parent_id } track by $index" class="span2">
-          <a href="#" class="thumbnail">
-            <img ng-src="{{file.src}}" alt="Image" /> {{ file.name }}
+        <div ng-repeat="file in desctop | filter:{ 'type':'file',   'parent': parent_id } track by $index" class="span2">
+          <a href="#" class="thumbnail img_in_folder">
+            <img ng-src="{{file.src}}" alt="Image" />
+            <div>{{ file.name }}</div>
+            <button ng-click="consoleLog(); $event.stopPropagation(); $event.preventDefault();" class="btn btn-mini btn-danger delete_img" type="button"> # </button>
           </a>
         </div>
       </div>

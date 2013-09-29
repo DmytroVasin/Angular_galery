@@ -53,9 +53,9 @@ angular.module('Galery.controllers', [])
     };
 
     prepareBreadCrumbs();
-    // $scope.consoleLog = function(){
-    //   $scope.chageFolder(0);
-    // };
+    $scope.consoleLog = function(){
+      console.log('!!!');
+    };
 
 // BREAD CRUMBS END
 
