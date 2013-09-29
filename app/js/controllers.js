@@ -132,8 +132,7 @@ angular.module('Galery.controllers', [])
 
           v.name = v.name.trim();
           if (!v.name) {
-            // $scope.removeTodo(todo);
-            // REMOVE if name is empty !!!
+            $scope.removeFolder(v);
           }
         saveAll();
         };
@@ -178,4 +177,10 @@ angular.module('Galery.controllers', [])
       localStorage.setItem('opened_image', JSON.stringify(file));
       $scope.openedImage = file;
     };
+
+    $scope.checkKeyCode = function(event, id){
+      if (event.keyCode == 13){
+        $scope.editFolderName(id, false);
+      }
+    }
   }]);

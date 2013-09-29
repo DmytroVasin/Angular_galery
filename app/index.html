@@ -84,7 +84,13 @@
             <button ng-click="removeFolder(folder); $event.stopPropagation(); $event.preventDefault();" class="btn btn-mini btn-danger" type="button"> # </button>
           </div>
           <div ng-show='folder.editing'>
-            <input maxlength="10" type="text" ng-model="folder.name" ng-click='$event.stopPropagation(); $event.preventDefault();' todo-focus="folder.editing">
+            <input maxlength="10"
+                   type="text"
+                   ng-model="folder.name"
+                   ng-click='$event.stopPropagation(); $event.preventDefault();'
+                   todo-focus="folder.editing"
+                   todo-blur="editFolderName(folder.id, false)"
+                   ng-keydown="checkKeyCode($event, folder.id)" >
             <div class="clear"></div>
             <button ng-click="editFolderName(folder.id, false); $event.stopPropagation(); $event.preventDefault();" class="btn btn-mini btn-success" type="button"> # </button>
           </div>
