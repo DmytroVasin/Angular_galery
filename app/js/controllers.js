@@ -6,18 +6,15 @@ angular.module('Galery.controllers', [])
   .controller('GaleryCtrl', ['$scope', 'Photos', 'Finder', 'Storage',
                     function( $scope,   Photos,   Finder,  Storage ) {
 
-    var desctop = $scope.desctop = Storage.get();
+    $scope.desctop = Storage.get();
 
-    if (desctop.length == 0) {
+    if ($scope.desctop.length == 0) {
       localStorage.setItem('parent_id',  0);
       localStorage.setItem('current_id', 0);
     }
-    // $scope.breadcrumbs = [{ id: 0, name: 'Home' }];
 
     var parent_id   = $scope.parent_id   = parseInt(localStorage.getItem('parent_id'), 10);
     var current_id  = $scope.current_id  = parseInt(localStorage.getItem('current_id'), 10);
-    console.log(desctop);
-
 
     $scope.photos = Photos.getPicture('girls', 1);
     $scope.current_page = 1;
@@ -48,8 +45,7 @@ angular.module('Galery.controllers', [])
           breadCrumbs(con, arr);
         }
       };
-
-      breadCrumbs($scope.parent_id, JSON.parse(localStorage.getItem("angular-js-storage")));
+      breadCrumbs($scope.parent_id, $scope.desctop);
     };
 
     prepareBreadCrumbs();
@@ -90,32 +86,69 @@ angular.module('Galery.controllers', [])
     $scope.addToFile = function(photo){
       current_id += 1;
 
-      desctop.push({
+      $scope.desctop.push({
         id:     current_id,
         type:   'file',
         parent: parent_id,
         name:   splitation(photo),
         src:    photo
       });
-      Storage.put(desctop);
+      saveAll();
       localStorage.setItem('current_id', current_id);
     };
 
     $scope.addFolder = function(){
       current_id += 1;
-      desctop.push({
+      $scope.desctop.push({
         id:     current_id,
         type:   'folder',
         parent: parent_id,
         name:   "Folder " + current_id,
+        editing: false
       });
-      Storage.put(desctop);
+      saveAll();
       localStorage.setItem('current_id', current_id);
     };
 
     $scope.chageFolder = function(id){
+      closeEditingFolder();
       parent_id  = $scope.parent_id  = id;
       localStorage.setItem('parent_id', id);
       prepareBreadCrumbs();
     };
+
+    $scope.editFolderName = function(id, flag){
+      angular.forEach($scope.desctop, function(v, k){
+        if (v.id === id && v.type === 'folder'){
+          v.editing = flag;
+
+          v.name = v.name.trim();
+          if (!v.name) {
+            // $scope.removeTodo(todo);
+            // REMOVE if name is empty !!!
+          }
+        saveAll();
+        };
+      });
+    };
+    function saveAll(){
+      Storage.put($scope.desctop);
+    };
+    function closeEditingFolder(){
+      angular.forEach($scope.desctop, function(v, k){
+        if (v.type === 'folder'){
+          v.editing = false;
+        };
+      });
+    };
+
+
+    $scope.removeFile = function(file){
+      $scope.desctop.splice($scope.desctop.indexOf(file), 1);
+      saveAll();
+    }
+    $scope.removeFolder = function(folder){
+      console.log(folder);
+    }
+
   }]);

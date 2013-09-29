@@ -46,7 +46,7 @@ body {
 /* MAIN */
 .main {
   width: 664px;
-  height: 510px;
+  height: 522px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin: 0 auto;
@@ -64,20 +64,23 @@ body {
 }
 
 .btn_folder {
-  height: 160px;
-}
-
-/* EDITING HTML*/
-.btn_folder {
   float: left;
-  height: 150px;
+  height: 154px;
   width: 130px;
   margin-left: 20px;
   margin-bottom: 10px;
   cursor: pointer;
 }
+.btn_folder input {
+  width: 115px;
+  margin-top: 47px;
+  margin-bottom: 5px;
+}
+.btn_folder .btn-success {
+  margin-left: 55px;
+}
+
 .name_wrapper {
-  margin-left: 38px;
   margin-top: 52px;
 }
 
@@ -85,11 +88,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: bolder;
+  text-align: center;
   margin-right: 4px;
   margin-top: 2px;
 }
 .btn-warning {
-  margin-left: 9px;
+  margin-left: 46px;
 }
 /*.btn-mini {*/
   /*float: left;*/
@@ -123,7 +127,7 @@ body {
 }
 
 .description {
-  height: 565px;
+  height: 577px;
   padding-top: 40px;
   text-align: center;
 }
