@@ -54,7 +54,7 @@
     <div class="well">
       <ul class="pager">
         <li>
-          <a href="#">&larr; Назад</a>
+          <a ng-click="breadCrumbsBack(); $event.stopPropagation(); $event.preventDefault();" href="#">&larr; Назад</a>
         </li>
       </ul>
       <ul class="breadcrumb">
@@ -71,12 +71,12 @@
         </li>
       </ul>
       <div class="clear"></div>
-<!--     <h1>{{parent_id}}</h1>
-    <h1>{{breadcrumbs}}</h1> -->
+    <!-- <h1>{{parent_id}}</h1> -->
+    <!-- <h1>{{breadcrumbs}}</h1> -->
       <div class="main">
         <div ng-repeat="folder in desctop | filter:{ 'type':'folder', 'parent': parent_id } track by $index"
-          ng-click='chageFolder(folder.id)'
-          class="btn_folder thumbnail" type="button">
+             ng-click='chageFolder(folder.id)'
+             class="btn_folder thumbnail" type="button">
           <div class='name_wrapper' ng-hide='folder.editing'>
             <div class="name">{{folder.name}}</div>
             <div class="clear"></div>

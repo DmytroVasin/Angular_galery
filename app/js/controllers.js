@@ -53,6 +53,13 @@ angular.module('Galery.controllers', [])
       console.log('!!!');
     };
 
+    $scope.breadCrumbsBack = function(){
+      if ($scope.breadcrumbs.length == 0) {return}
+      var element    = $scope.breadcrumbs.length-2;
+      var element_id = (element == -1) ? element_id = 0 : $scope.breadcrumbs[element].id
+      $scope.chageFolder(element_id);
+    };
+
 // BREAD CRUMBS END
 
 
