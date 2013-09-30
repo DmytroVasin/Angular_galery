@@ -182,21 +182,31 @@ angular.module('Galery.controllers', [])
       if (event.keyCode == 13){
         $scope.editFolderName(id, false);
       }
-    }
+    };
 
 //  Export
 
     $scope.export_popup = function(){
       var el = {};
-      var json = Storage.get();
+      var json_export = Storage.get();
       el.code = $('#export-json');
-                                                                      // app.subscribe('router:export', exportJSON);
-      el.code.html( JSON.stringify(json, undefined, 4));
+
+      el.code.html( JSON.stringify(json_export, undefined, 4));
       Prism.highlightElement( el.code.get(0) );
-    }
+    };
 
     $scope.import_popup = function(){
-      console.log($scope.importingJson);
-    }
+      $scope.desctop = JSON.parse($scope.importingJson);
+      Storage.put($scope.desctop);
+      localStorage.setItem('parent_id', 0);
+
+      var id_max = Math.max.apply(null, $scope.desctop.map(return_ids))
+      localStorage.setItem('current_id', id_max);
+
+      $scope.importingJson = '';
+    };
+    function return_ids(obj) {
+      return obj.id;
+    };
 
   }]);
