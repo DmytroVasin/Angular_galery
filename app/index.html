@@ -6,8 +6,10 @@
   <link rel="stylesheet" href="css/reset.css"/>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/carusel_images.css">
+  <link rel="stylesheet" href="css/prism.css" />
   <link rel="stylesheet" href="css/app.css"/>
   <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
 </head>
 <body ng-controller="GaleryCtrl" ng-cloak>
   <div class="well" ng-show='loader'>
@@ -110,21 +112,49 @@
   <div class="right_column" ng-show='openedImage'>
     <div class="well">
       <div class="description">
-        <div class="span3"><a href="#" class="thumbnail"><img ng-src="{{openedImage.src}}" width="230px" alt="Image" /></a></div>
+        <div class="span3">
+          <img ng-src="{{openedImage.src}}" class="thumbnail" width="230px" alt="Image" />
+        </div>
         <div class="title">{{openedImage.name}}</div>
         <div class='definition'>Add date:</div>
         <div>2013-09-23 13:22:59 +0300</div>
-        <button class="btn btn-large btn-block btn-primary" type="button">Download</button>
+        <a href="{{openedImage.src}}" class="btn btn-large btn-block btn-primary" download="{{openedImage.name}}.jpg">Download</a>
       </div>
     </div>
   </div>
 
   <div class="clear"></div>
-  <button class="btn btn-large btn-primary" type="button">Load from JSON</button>
-  <button class="btn btn-large btn-primary" type="button">Export to JSON</button>
+  <button class="btn btn-large btn-primary" type="button" data-toggle="modal" data-target="#import">Load from JSON</button>
+  <button class="btn btn-large btn-primary" type="button" data-toggle="modal" data-target="#export" ng-click='export_popup()'>Export to JSON</button>
   <div class="clear"></div>
-  <textarea class="text_area" rows="4" placeholder='Dropdown with textarea for import/export of JSON folders structure'></textarea>
 
+
+  <div class="modal" id="export" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Exporting JSON...</h3>
+    </div>
+    <div class="modal-body">
+      <pre><code class="language-javascript" id='export-json'></code></pre>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+  </div>
+
+  <div class="modal" id="import" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Import from JSON</h3>
+    </div>
+    <div class="modal-body">
+      <textarea class="text_area" rows="4" placeholder='Dropdown with textarea for import/export of JSON folders structure' ng-model='importingJson'></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true" ng-click='import_popup()' >Apply</button>
+    </div>
+  </div>
 
   <script src="http://code.angularjs.org/1.2.0-rc.2/angular.min.js"></script>
   <script src="http://code.angularjs.org/1.2.0-rc.2/angular-resource.min.js"></script>
@@ -134,5 +164,6 @@
   <script src="js/services.js"></script>
   <script src="js/directives.js"></script>
   <script src="js/controllers.js"></script>
+  <script type='text/javascript' src='js/plugins/prism.js'></script>
 </body>
 </html>

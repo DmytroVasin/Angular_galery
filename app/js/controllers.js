@@ -183,4 +183,20 @@ angular.module('Galery.controllers', [])
         $scope.editFolderName(id, false);
       }
     }
+
+//  Export
+
+    $scope.export_popup = function(){
+      var el = {};
+      var json = Storage.get();
+      el.code = $('#export-json');
+                                                                      // app.subscribe('router:export', exportJSON);
+      el.code.html( JSON.stringify(json, undefined, 4));
+      Prism.highlightElement( el.code.get(0) );
+    }
+
+    $scope.import_popup = function(){
+      console.log($scope.importingJson);
+    }
+
   }]);

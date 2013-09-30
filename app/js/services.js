@@ -60,8 +60,8 @@ angular.module('Galery.services', ['ngResource'])
     get: function () {
       return JSON.parse(localStorage.getItem(STORAGE_ID) || "[]");
     },
-    put: function (todos) {
-      localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
+    put: function (item) {
+      localStorage.setItem(STORAGE_ID, JSON.stringify(item));
     }
   };
 });

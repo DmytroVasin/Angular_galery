@@ -23,3 +23,16 @@
 .carousel-indicators .active {
 background: #333333;
 }
+
+/*  MODAL  */
+#export {
+	z-index: 1050;
+	width: 800px;
+	margin-left: -400px;
+}
+.modal-header {
+	text-align: center;
+}
+.modal-body {
+  max-height: 600px;
+}
