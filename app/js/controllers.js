@@ -136,9 +136,9 @@ $scope.$watch('locationPath', function(path) {
 
     // $scope.chageFolder = function(id){
     $scope.chageFolder = function(object){
+      var id = 0;
       if ( object === 0 ) {
         $location.path('/');
-        id = object; // object = 0;
       } else {
         $location.path(object.locat);
         id = object.id;
