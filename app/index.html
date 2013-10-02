@@ -66,7 +66,7 @@
         <li><a ng-click='chageFolder(0); $event.stopPropagation(); $event.preventDefault();' href="#">Home</a></li>
         <li ng-repeat="crumb in breadcrumbs" ng-class="{active: $last}" >
           <span class='divider'>/</span><!-- &#9658; -->
-          <a ng-if="!$last" ng-click='chageFolder(crumb.id); $event.stopPropagation(); $event.preventDefault();' href="#">{{crumb.name}}</a>
+          <a ng-if="!$last" ng-click='chageFolder(crumb); $event.stopPropagation(); $event.preventDefault();' href="#">{{crumb.name}}</a>
           <span ng-if="$last">{{crumb.name}}</span>
         </li>
       </ul>
@@ -78,7 +78,7 @@
       <div class="clear"></div>
       <div class="main">
         <div ng-repeat="folder in desctop | filter:{ 'type':'folder', 'parent': parent_id } track by $index"
-             ng-click='chageFolder(folder.id)'
+             ng-click='chageFolder(folder)'
              class="btn_folder thumbnail" type="button">
           <div class='name_wrapper' ng-hide='folder.editing'>
             <div class="name">{{folder.name}}</div>

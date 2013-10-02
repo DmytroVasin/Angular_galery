@@ -128,14 +128,22 @@ $scope.$watch('locationPath', function(path) {
         parent: parent_id,
         name:   "Folder " + current_id,
         editing: false,
-        location: '/example_folder'
+        locat: '/example_folder'
       });
       saveAll();
       localStorage.setItem('current_id', current_id);
     };
 
-    $scope.chageFolder = function(id){
-    // $scope.chageFolder = function(object){
+    // $scope.chageFolder = function(id){
+    $scope.chageFolder = function(object){
+      if ( object === 0 ) {
+        $location.path('/');
+        id = object; // object = 0;
+      } else {
+        $location.path(object.locat);
+        id = object.id;
+      }
+
       closeEditingFolder();
       parent_id  = $scope.parent_id  = id;
       localStorage.setItem('parent_id', id);
@@ -143,7 +151,6 @@ $scope.$watch('locationPath', function(path) {
 
 
 
-      $location.path()
       // $scope.$watch('$location.path()', function(path) {
       // $scope.loc = $location.url();
       // console.log($scope.loc);
