@@ -12,6 +12,9 @@
   <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
 </head>
 <body ng-controller="GaleryCtrl" ng-cloak>
+  <h2> {{ loc }} </h2>
+  <input type="text" ng-model="locationPath" />{{locationPath}}
+  <br />
   <div class="well" ng-show='loader'>
     <form class="form-search" ng-submit="searchPhotos()">
       <div class="input-append">
@@ -73,8 +76,6 @@
         </li>
       </ul>
       <div class="clear"></div>
-    <!-- <h1>{{parent_id}}</h1> -->
-    <!-- <h1>{{breadcrumbs}}</h1> -->
       <div class="main">
         <div ng-repeat="folder in desctop | filter:{ 'type':'folder', 'parent': parent_id } track by $index"
              ng-click='chageFolder(folder.id)'

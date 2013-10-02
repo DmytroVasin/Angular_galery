@@ -3,10 +3,28 @@
 /* Controllers */
 
 angular.module('Galery.controllers', [])
-  .controller('GaleryCtrl', ['$scope', 'Photos', 'Finder', 'Storage',
-                    function( $scope,   Photos,   Finder,  Storage ) {
+  .controller('GaleryCtrl', ['$scope', '$location', 'Photos', 'Finder', 'Storage',
+                    function( $scope, $location, Photos,   Finder,  Storage ) {
 
     $scope.desctop = Storage.get();
+
+
+// js - контроллер
+$scope.$watch('locationPath', function(path) {
+  $location.path(path);
+});
+
+
+
+
+    // $scope.$watch('$location.path()', function(path) {
+    // $scope.loc = $location.path();
+    // console.log($scope.loc);
+    // });
+
+
+
+
 
     if ($scope.desctop.length == 0) {
       localStorage.setItem('parent_id',  0);
@@ -50,9 +68,6 @@ angular.module('Galery.controllers', [])
     };
 
     prepareBreadCrumbs();
-    $scope.consoleLog = function(){
-      console.log('!!!');
-    };
 
     $scope.breadCrumbsBack = function(){
       if ($scope.breadcrumbs.length == 0) {return}
@@ -112,17 +127,29 @@ angular.module('Galery.controllers', [])
         type:   'folder',
         parent: parent_id,
         name:   "Folder " + current_id,
-        editing: false
+        editing: false,
+        location: '/example_folder'
       });
       saveAll();
       localStorage.setItem('current_id', current_id);
     };
 
     $scope.chageFolder = function(id){
+    // $scope.chageFolder = function(object){
       closeEditingFolder();
       parent_id  = $scope.parent_id  = id;
       localStorage.setItem('parent_id', id);
       prepareBreadCrumbs();
+
+
+
+      $location.path()
+      // $scope.$watch('$location.path()', function(path) {
+      // $scope.loc = $location.url();
+      // console.log($scope.loc);
+      // });
+
+
     };
 
     $scope.editFolderName = function(id, flag){
