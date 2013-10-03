@@ -43,18 +43,6 @@ angular.module('Galery.services', ['ngResource','ngRoute'])
     getPicture: getPicture
   };
 })
-.factory('Finder', function() {
-  //  ???? simple connection
-  var factory = {};
-    // factory.active = LocalStorage.get(active) || 0  // into LocalStorage
-  factory.add = function(file){
-    console.log(file);
-  };
-  factory.setActive = function(id){
-    factory.active = id
-  }
-  return factory;
-})
 .factory('Storage', function () {
   var STORAGE_ID = 'angular-js-storage';
 
@@ -67,3 +55,15 @@ angular.module('Galery.services', ['ngResource','ngRoute'])
     }
   };
 });
+// .factory('Finder', function() {
+//   //  ???? simple connection
+//   var factory = {};
+//     // factory.active = LocalStorage.get(active) || 0  // into LocalStorage
+//   factory.add = function(file){
+//     console.log(file);
+//   };
+//   factory.setActive = function(id){
+//     factory.active = id
+//   }
+//   return factory;
+// })
