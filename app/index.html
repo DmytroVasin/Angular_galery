@@ -12,9 +12,6 @@
   <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
 </head>
 <body ng-controller="GaleryCtrl" ng-cloak>
-  <h2> {{ loc }} </h2>
-  <input type="text" ng-model="locationPath" />{{locationPath}}
-  <br />
   <div class="well" ng-show='loader'>
     <form class="form-search" ng-submit="searchPhotos()">
       <div class="input-append">
@@ -160,6 +157,7 @@
   <script src="http://code.angularjs.org/1.2.0-rc.2/angular.min.js"></script>
   <script src="http://code.angularjs.org/1.2.0-rc.2/angular-resource.min.js"></script>
   <script src="http://code.angularjs.org/1.2.0-rc.2/angular-route.min.js"></script>
+  <script src='http://code.angularjs.org/1.2.0rc1/angular-route.min.js'></script>
 
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>

@@ -4,23 +4,22 @@
 
 angular.module('Galery.controllers', [])
   .controller('GaleryCtrl', ['$scope', '$location', 'Photos', 'Finder', 'Storage',
-                    function( $scope, $location, Photos,   Finder,  Storage ) {
+                    function( $scope,   $location,   Photos,   Finder,   Storage ) {
 
     $scope.desctop = Storage.get();
 
 
-// js - контроллер
-$scope.$watch('locationPath', function(path) {
-  $location.path(path);
-});
 
-
-
-
-    // $scope.$watch('$location.path()', function(path) {
-    // $scope.loc = $location.path();
-    // console.log($scope.loc);
-    // });
+// Trick to change url START
+    var loc = $location.url().split('/');
+    var id_link = loc[loc.length - 1];
+    angular.forEach($scope.desctop, function(v, k){
+      if (v.id.toString() == id_link && v.type == 'folder'){
+        parent_id  = $scope.parent_id  = id_link;
+        localStorage.setItem('parent_id', id_link);
+      };
+    });
+// Trick to change url END
 
 
 
@@ -51,29 +50,30 @@ $scope.$watch('locationPath', function(path) {
         return false;
       };
 
-      var con;
-
-      function breadCrumbs(parent_id, arr){
-        angular.forEach(arr, function(v, k){
-          if (v.id === parent_id && v.type === 'folder'){
-            con = v.parent;
-            $scope.breadcrumbs.unshift(v);
-          }
-        });
-        if (con !== 0) {
-          breadCrumbs(con, arr);
-        }
-      };
       breadCrumbs($scope.parent_id, $scope.desctop);
+    };
+
+    var con;
+
+    function breadCrumbs(parent_id, arr){
+      angular.forEach(arr, function(v, k){
+        if (v.id === parent_id && v.type === 'folder'){
+          con = v.parent;
+          $scope.breadcrumbs.unshift(v);
+        }
+      });
+      if (con !== 0) {
+        breadCrumbs(con, arr);
+      }
     };
 
     prepareBreadCrumbs();
 
     $scope.breadCrumbsBack = function(){
-      if ($scope.breadcrumbs.length == 0) {return}
+      if ($scope.breadcrumbs.length == 0) {return false}
       var element    = $scope.breadcrumbs.length-2;
-      var element_id = (element == -1) ? element_id = 0 : $scope.breadcrumbs[element].id
-      $scope.chageFolder(element_id);
+      var object = (element == -1) ?  0 : $scope.breadcrumbs[element]
+      $scope.chageFolder(object);
     };
 
 // BREAD CRUMBS END
@@ -122,19 +122,28 @@ $scope.$watch('locationPath', function(path) {
 
     $scope.addFolder = function(){
       current_id += 1;
-      $scope.desctop.push({
+      
+      var navigation = '';
+      angular.forEach($scope.breadcrumbs, function(v, k){
+        navigation +=  '/' + v.id;
+      });
+      navigation += '/' + current_id;
+
+      var cur_obj = {
         id:     current_id,
         type:   'folder',
         parent: parent_id,
         name:   "Folder " + current_id,
         editing: false,
-        locat: '/example_folder'
-      });
+        locat: navigation
+      };
+
+      $scope.desctop.push(cur_obj);
+
       saveAll();
       localStorage.setItem('current_id', current_id);
     };
 
-    // $scope.chageFolder = function(id){
     $scope.chageFolder = function(object){
       var id = 0;
       if ( object === 0 ) {
@@ -148,15 +157,6 @@ $scope.$watch('locationPath', function(path) {
       parent_id  = $scope.parent_id  = id;
       localStorage.setItem('parent_id', id);
       prepareBreadCrumbs();
-
-
-
-      // $scope.$watch('$location.path()', function(path) {
-      // $scope.loc = $location.url();
-      // console.log($scope.loc);
-      // });
-
-
     };
 
     $scope.editFolderName = function(id, flag){
@@ -172,6 +172,7 @@ $scope.$watch('locationPath', function(path) {
         };
       });
     };
+
     function saveAll(){
       Storage.put($scope.desctop);
     };

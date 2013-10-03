@@ -5,10 +5,12 @@
 
 // Demonstrate how to register services
 // In this case it is a simple value service.
-angular.module('Galery.services', ['ngResource'])
-.config(function($httpProvider){
-  delete $httpProvider.defaults.headers.common['X-Requested-With'];
-})
+angular.module('Galery.services', ['ngResource','ngRoute'])
+.config(['$routeProvider', function($routeProvider){
+  // delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  $routeProvider.when('/:linking*', { controller: 'GaleryCtrl'})
+}])
+
 .factory('Photos', function($resource, $rootScope) {
   $rootScope.loader = false;
   var params = {
