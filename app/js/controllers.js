@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('Galery.controllers', [])
-  .controller('GaleryCtrl', ['$scope', '$location', 'Photos', 'Finder', 'Storage',
-                    function( $scope,   $location,   Photos,   Finder,   Storage ) {
+  .controller('GaleryCtrl', ['$scope', '$location', 'Photos', 'Storage',
+                    function( $scope,   $location,   Photos,   Storage ) {
 
     $scope.desctop = Storage.get();
 
@@ -122,7 +122,7 @@ angular.module('Galery.controllers', [])
 
     $scope.addFolder = function(){
       current_id += 1;
-      
+
       var navigation = '';
       angular.forEach($scope.breadcrumbs, function(v, k){
         navigation +=  '/' + v.id;

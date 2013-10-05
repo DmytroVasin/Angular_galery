@@ -23,12 +23,12 @@
     <div class="carousel">
       <div class="row-fluid">
         <div ng-repeat="photo in photos" class="span3">
-          <a href="#" class="thumbnail" ng-click='addToFile(photo); $event.stopPropagation(); $event.preventDefault();'>
+          <a href="#" class="thumbnail" ng-click='addToFile(photo); '>
             <img class='carousel_img_$index' ng-src="{{photo}}" width='231px' alt="Image" />
           </a>
         </div>
-        <a ng-click="rotateCarusel('left'); $event.stopPropagation(); $event.preventDefault();" disabled="{{isDisabled}}" ng-show="isDisabled" class="left carousel-control" href="#" data-slide="prev">‹</a>
-        <a ng-click="rotateCarusel('right'); $event.stopPropagation(); $event.preventDefault();" class="right carousel-control" href="#" data-slide="next">›</a>
+        <a ng-click="rotateCarusel('left');" disabled="{{isDisabled}}" ng-show="isDisabled" class="left carousel-control" href="#" data-slide="prev">‹</a>
+        <a ng-click="rotateCarusel('right');" class="right carousel-control" href="#" data-slide="next">›</a>
       </div>
     </div>
   </div>
@@ -56,20 +56,20 @@
     <div class="well">
       <ul class="pager">
         <li>
-          <a ng-click="breadCrumbsBack(); $event.stopPropagation(); $event.preventDefault();" href="#">&larr; Назад</a>
+          <a ng-click="breadCrumbsBack(); " href="#">&larr; Назад</a>
         </li>
       </ul>
       <ul class="breadcrumb">
-        <li><a ng-click='chageFolder(0); $event.stopPropagation(); $event.preventDefault();' href="#">Home</a></li>
+        <li><a ng-click='chageFolder(0); ' href="#">Home</a></li>
         <li ng-repeat="crumb in breadcrumbs" ng-class="{active: $last}" >
           <span class='divider'>/</span><!-- &#9658; -->
-          <a ng-if="!$last" ng-click='chageFolder(crumb); $event.stopPropagation(); $event.preventDefault();' href="#">{{crumb.name}}</a>
+          <a ng-if="!$last" ng-click='chageFolder(crumb); ' href="#">{{crumb.name}}</a>
           <span ng-if="$last">{{crumb.name}}</span>
         </li>
       </ul>
       <ul class="pager">
         <li>
-          <a ng-click='addFolder(); $event.stopPropagation(); $event.preventDefault();' href="#">Add folder <b>+</b></a>
+          <a ng-click='addFolder(); ' href="#">Add folder <b>+</b></a>
         </li>
       </ul>
       <div class="clear"></div>
@@ -80,27 +80,26 @@
           <div class='name_wrapper' ng-hide='folder.editing'>
             <div class="name">{{folder.name}}</div>
             <div class="clear"></div>
-            <button ng-click="editFolderName(folder.id, true); $event.stopPropagation(); $event.preventDefault();" class="btn btn-mini btn-warning" type="button"> # </button>
-            <button ng-click="removeFolder(folder); $event.stopPropagation(); $event.preventDefault();" class="btn btn-mini btn-danger" type="button"> # </button>
+            <button ng-click="editFolderName(folder.id, true); " class="btn btn-mini btn-warning" type="button"> # </button>
+            <button ng-click="removeFolder(folder);" class="btn btn-mini btn-danger" type="button"> # </button>
           </div>
           <div ng-show='folder.editing'>
             <input maxlength="10"
                    type="text"
                    ng-model="folder.name"
-                   ng-click='$event.stopPropagation(); $event.preventDefault();'
                    todo-focus="folder.editing"
                    todo-blur="editFolderName(folder.id, false)"
                    ng-keydown="checkKeyCode($event, folder.id)" >
             <div class="clear"></div>
-            <button ng-click="editFolderName(folder.id, false); $event.stopPropagation(); $event.preventDefault();" class="btn btn-mini btn-success" type="button"> # </button>
+            <button ng-click="editFolderName(folder.id, false); " class="btn btn-mini btn-success" type="button"> # </button>
           </div>
         </div>
 
         <div ng-repeat="file in desctop | filter:{ 'type':'file',   'parent': parent_id } track by $index" class="span2">
-          <a ng-click="showImage(file); $event.stopPropagation(); $event.preventDefault();" href="#" class="thumbnail img_in_folder">
+          <a ng-click="showImage(file); " href="#" class="thumbnail img_in_folder">
             <img ng-src="{{file.src}}" alt="Image" />
             <div>{{ file.name }}</div>
-            <button ng-click="removeFile(file); $event.stopPropagation(); $event.preventDefault();" class="btn btn-mini btn-danger delete_img" type="button"> # </button>
+            <button ng-click="removeFile(file); " class="btn btn-mini btn-danger delete_img" type="button"> # </button>
           </a>
         </div>
       </div>
@@ -154,10 +153,9 @@
     </div>
   </div>
 
-  <script src="http://code.angularjs.org/1.2.0-rc.2/angular.min.js"></script>
+  <script src="http://code.angularjs.org/1.2.0-rc.2/angular.js"></script>
   <script src="http://code.angularjs.org/1.2.0-rc.2/angular-resource.min.js"></script>
   <script src="http://code.angularjs.org/1.2.0-rc.2/angular-route.min.js"></script>
-  <script src='http://code.angularjs.org/1.2.0rc1/angular-route.min.js'></script>
 
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
