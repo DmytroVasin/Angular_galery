@@ -53,6 +53,7 @@ angular.module('Galery.controllers', [])
     var con;
 
     function breadCrumbs(parent_id, arr){
+      // console.log(2);
       angular.forEach(arr, function(v, k){
         if (v.id === parent_id && v.type === 'folder'){
           con = v.parent;
@@ -175,6 +176,7 @@ angular.module('Galery.controllers', [])
     };
 
     function closeEditingFolder(){
+      // $scope.desktop = Storage.get();  ???
       angular.forEach($scope.desktop, function(v, k){
         if (v.type === 'folder'){
           v.editing = false;
