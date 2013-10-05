@@ -6,14 +6,14 @@ angular.module('Galery.controllers', [])
   .controller('GaleryCtrl', ['$scope', '$location', 'Photos', 'Storage',
                     function( $scope,   $location,   Photos,   Storage ) {
 
-    $scope.desctop = Storage.get();
+    $scope.desktop = Storage.get();
 
 
 
 // Trick to change url START
     var loc = $location.url().split('/');
     var id_link = loc[loc.length - 1];
-    angular.forEach($scope.desctop, function(v, k){
+    angular.forEach($scope.desktop, function(v, k){
       if (v.id.toString() == id_link && v.type == 'folder'){
         parent_id  = $scope.parent_id  = id_link;
         localStorage.setItem('parent_id', id_link);
@@ -22,10 +22,7 @@ angular.module('Galery.controllers', [])
 // Trick to change url END
 
 
-
-
-
-    if ($scope.desctop.length == 0) {
+    if ($scope.desktop.length == 0) {
       localStorage.setItem('parent_id',  0);
       localStorage.setItem('current_id', 0);
     }
@@ -50,7 +47,7 @@ angular.module('Galery.controllers', [])
         return false;
       };
 
-      breadCrumbs($scope.parent_id, $scope.desctop);
+      breadCrumbs($scope.parent_id, $scope.desktop);
     };
 
     var con;
@@ -109,7 +106,7 @@ angular.module('Galery.controllers', [])
     $scope.addToFile = function(photo){
       current_id += 1;
 
-      $scope.desctop.push({
+      $scope.desktop.push({
         id:     current_id,
         type:   'file',
         parent: parent_id,
@@ -138,7 +135,7 @@ angular.module('Galery.controllers', [])
         locat: navigation
       };
 
-      $scope.desctop.push(cur_obj);
+      $scope.desktop.push(cur_obj);
 
       saveAll();
       localStorage.setItem('current_id', current_id);
@@ -160,7 +157,7 @@ angular.module('Galery.controllers', [])
     };
 
     $scope.editFolderName = function(id, flag){
-      angular.forEach($scope.desctop, function(v, k){
+      angular.forEach($scope.desktop, function(v, k){
         if (v.id === id && v.type === 'folder'){
           v.editing = flag;
 
@@ -174,11 +171,11 @@ angular.module('Galery.controllers', [])
     };
 
     function saveAll(){
-      Storage.put($scope.desctop);
+      Storage.put($scope.desktop);
     };
 
     function closeEditingFolder(){
-      angular.forEach($scope.desctop, function(v, k){
+      angular.forEach($scope.desktop, function(v, k){
         if (v.type === 'folder'){
           v.editing = false;
         };
@@ -187,12 +184,12 @@ angular.module('Galery.controllers', [])
 
 
     $scope.removeFile = function(file){
-      $scope.desctop.splice($scope.desctop.indexOf(file), 1);
+      $scope.desktop.splice($scope.desktop.indexOf(file), 1);
       saveAll();
     };
 
     $scope.removeFolder = function(folder){
-      $scope.desctop = concl(folder.id, $scope.desctop).filter( function(item){
+      $scope.desktop = concl(folder.id, $scope.desktop).filter( function(item){
         if (item.id !== '0' && item.id !== folder.id ){ return item; }
       });
       saveAll();
@@ -231,11 +228,11 @@ angular.module('Galery.controllers', [])
     };
 
     $scope.import_popup = function(){
-      $scope.desctop = JSON.parse($scope.importingJson);
-      Storage.put($scope.desctop);
+      $scope.desktop = JSON.parse($scope.importingJson);
+      Storage.put($scope.desktop);
       localStorage.setItem('parent_id', 0);
 
-      var id_max = Math.max.apply(null, $scope.desctop.map(return_ids))
+      var id_max = Math.max.apply(null, $scope.desktop.map(return_ids))
       localStorage.setItem('current_id', id_max);
 
       $scope.importingJson = '';
