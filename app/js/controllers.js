@@ -113,6 +113,7 @@ angular.module('Galery.controllers', [])
         parent: parent_id,
         name:   splitation(photo),
         editing: false,
+        date:   timeNow(),
         src:    photo
       });
       saveAll();
@@ -207,7 +208,7 @@ angular.module('Galery.controllers', [])
 
     $scope.showImage = function(file){
       localStorage.setItem('opened_image', JSON.stringify(file));
-      $scope.openedImage = file;
+      $scope.openedImage = angular.copy(file);
     };
 
     $scope.checkKeyCode = function(event, id){
@@ -239,6 +240,12 @@ angular.module('Galery.controllers', [])
     };
     function return_ids(obj) {
       return obj.id;
+    };
+    function timeNow(){
+      var d = new Date();
+      var curr_month = d.getMonth();
+      curr_month++;
+      return d.getFullYear() + "-" + curr_month + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
     };
 
   }]);

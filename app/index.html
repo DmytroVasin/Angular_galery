@@ -71,7 +71,6 @@
       <div class="clear"></div>
       <div class="main">
 
-
         <div class="span2" ng-repeat="folder in desktop | filter:{ 'type':'folder', 'parent': parent_id } track by $index">
           <a href="#" class="thumbnail img_in_folder">
             <div class="folder" ng-click='chageFolder(folder)'>
@@ -120,7 +119,7 @@
         </div>
         <div class="title">{{openedImage.name}}</div>
         <div class='definition'>Add date:</div>
-        <div>2013-09-23 13:22:59 +0300</div>
+        <div>{{openedImage.date}}</div>
         <a href="{{openedImage.src}}" class="btn btn-large btn-block btn-primary" download="{{openedImage.name}}.jpg">Download</a>
       </div>
     </div>
