@@ -160,13 +160,13 @@ angular.module('Galery.controllers', [])
     $scope.editFolderName = function(id, flag){
       angular.forEach($scope.desktop, function(v, k){
         if (v.id === id && v.type === 'folder'){
-          v.editing = flag;
-
           v.name = v.name.trim();
-          if (!v.name) {
-            $scope.removeFolder(v);
+          if (v.name) {
+            v.editing = flag;
+            saveAll();
+          } else {
+            closeEditingFolder();
           }
-        saveAll();
         };
       });
     };
@@ -176,7 +176,7 @@ angular.module('Galery.controllers', [])
     };
 
     function closeEditingFolder(){
-      // $scope.desktop = Storage.get();  ???
+      $scope.desktop = Storage.get();
       angular.forEach($scope.desktop, function(v, k){
         if (v.type === 'folder'){
           v.editing = false;

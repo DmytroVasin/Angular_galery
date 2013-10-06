@@ -78,7 +78,7 @@
               <div class="front"></div>
               <div class="back"></div>
             </div>
-            <button ng-click="removeFolder(folder)" class="btn btn-mini btn-danger delete_img" type="button"> # </button>
+            <button ng-click="removeFolder(folder)" class="btn btn-mini btn-danger delete_img" type="button"> x </button>
             <span class="name" ng-click='editFolderName(folder.id, true)' ng-hide='folder.editing'>{{folder.name}}</span>
           
             <div class='change_name' ng-show='folder.editing'>
@@ -144,7 +144,7 @@
           <a href="#" class="thumbnail img_in_folder">
             <img ng-src="{{file.src}}" ng-click="showImage(file)"  alt="Image" />
             <div>{{ file.name }}</div>
-            <button ng-click="removeFile(file)" class="btn btn-mini btn-danger delete_img" type="button"> # </button>
+            <button ng-click="removeFile(file)" class="btn btn-mini btn-danger delete_img" type="button"> x </button>
           </a>
         </div>
       </div>
