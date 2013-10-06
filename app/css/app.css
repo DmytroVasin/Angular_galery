@@ -22,11 +22,6 @@ body {
   float: left;
 }
 
-.pager li a b {
-  font-weight: bolder;
-  font-size: 17px;
-}
-
 .breadcrumb {
   float: left;
   margin: 18px 0 0 5px;
@@ -158,4 +153,11 @@ body {
 
 .last_crumb {
   color: #f5f5f5;
+}
+
+.add_folder {
+  float: right;
+  margin: 20px 61px 0 0;
+  font-weight: bolder;
+  font-size: 13px;
 }

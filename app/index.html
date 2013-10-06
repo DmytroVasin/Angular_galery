@@ -67,11 +67,7 @@
           <span ng-if="$last">{{crumb.name}}</span>
         </li>
       </ul>
-      <ul class="pager">
-        <li>
-          <a ng-click='addFolder()' href="#">Add folder <b>+</b></a>
-        </li>
-      </ul>
+      <button ng-click='addFolder()' class="btn btn-primary add_folder" type="button">Add folder + </button>
       <div class="clear"></div>
       <div class="main">
         <div ng-repeat="folder in desktop | filter:{ 'type':'folder', 'parent': parent_id } track by $index"
