@@ -163,7 +163,8 @@ body {
 .change_name input {
   width: 115px;
   padding-top: 5px;
-  height: 14px;
+  height: 12px;
+  margin-top: 2px;
 }
 
 .name {
@@ -171,7 +172,7 @@ body {
   font-size: 14px;
   font-weight: bolder;
   margin-top: 5px;
-  display: block;
+  display: inline-block;
 }
 
 .name:hover {

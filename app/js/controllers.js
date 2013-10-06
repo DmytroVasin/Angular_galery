@@ -112,6 +112,7 @@ angular.module('Galery.controllers', [])
         type:   'file',
         parent: parent_id,
         name:   splitation(photo),
+        editing: false,
         src:    photo
       });
       saveAll();
@@ -151,21 +152,21 @@ angular.module('Galery.controllers', [])
         id = object.id;
       }
 
-      closeEditingFolder();
+      closeEditing();
       parent_id  = $scope.parent_id  = id;
       localStorage.setItem('parent_id', id);
       prepareBreadCrumbs();
     };
 
-    $scope.editFolderName = function(id, flag){
+    $scope.editingName = function(id, flag){
       angular.forEach($scope.desktop, function(v, k){
-        if (v.id === id && v.type === 'folder'){
+        if (v.id === id){
           v.name = v.name.trim();
           if (v.name) {
             v.editing = flag;
             saveAll();
           } else {
-            closeEditingFolder();
+            closeEditing();
           }
         };
       });
@@ -175,15 +176,12 @@ angular.module('Galery.controllers', [])
       Storage.put($scope.desktop);
     };
 
-    function closeEditingFolder(){
+    function closeEditing(){
       $scope.desktop = Storage.get();
       angular.forEach($scope.desktop, function(v, k){
-        if (v.type === 'folder'){
-          v.editing = false;
-        };
+        v.editing = false;
       });
     };
-
 
     $scope.removeFile = function(file){
       $scope.desktop.splice($scope.desktop.indexOf(file), 1);
@@ -214,7 +212,7 @@ angular.module('Galery.controllers', [])
 
     $scope.checkKeyCode = function(event, id){
       if (event.keyCode == 13){
-        $scope.editFolderName(id, false);
+        $scope.editingName(id, false);
       }
     };
 

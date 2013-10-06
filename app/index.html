@@ -79,14 +79,14 @@
               <div class="back"></div>
             </div>
             <button ng-click="removeFolder(folder)" class="btn btn-mini btn-danger delete_img" type="button"> x </button>
-            <span class="name" ng-click='editFolderName(folder.id, true)' ng-hide='folder.editing'>{{folder.name}}</span>
+            <span class="name" ng-click='editingName(folder.id, true)' ng-hide='folder.editing'>{{folder.name}}</span>
           
             <div class='change_name' ng-show='folder.editing'>
               <input maxlength="10"
                      type="text"
                      ng-model="folder.name"
                      todo-focus="folder.editing"
-                     todo-blur="editFolderName(folder.id, false)"
+                     todo-blur="editingName(folder.id, false)"
                      ng-keydown="checkKeyCode($event, folder.id)" >
             </div>
           </a>
@@ -95,9 +95,17 @@
         <div ng-repeat="file in desktop | filter:{ 'type':'file',   'parent': parent_id } track by $index" class="span2">
           <a href="#" class="thumbnail img_in_folder">
             <img ng-src="{{file.src}}" ng-click="showImage(file)"  alt="Image" />
-            <div class="clear"></div>
-            <span class="name" >{{ file.name }}</span>
             <button ng-click="removeFile(file)" class="btn btn-mini btn-danger delete_img" type="button"> x </button>
+            <span class="name" ng-click='editingName(file.id, true)' ng-hide='file.editing' >{{ file.name }}</span>
+
+            <div class='change_name' ng-show='file.editing'>
+              <input maxlength="10"
+                     type="text"
+                     ng-model="file.name"
+                     todo-focus="file.editing"
+                     todo-blur="editingName(file.id, false)"
+                     ng-keydown="checkKeyCode($event, file.id)" >
+            </div>
           </a>
         </div>
       </div>
