@@ -11,14 +11,28 @@ angular.module('Galery.services', ['ngResource'])
 }])
 .factory('Photos', function($resource, $rootScope) {
 // $rootScope.loader = false;
+
   function getPicture(x, y){
-    return $resource("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", { tags:'girls', tagmode:"any", format:"json" }).get()
-    .$promise
-    .then(function (data) {
-      console.log(data);
+      var Flickr = $resource(
+      "http://api.flickr.com/services/feeds/photos_public.gne",
+      {
+        format:  'json',
+        tagmode: 'any',
+        tags:    'girls'
+      },
+      {
+        get: {
+          method: 'JSONP',
+          params: {
+            jsoncallback: 'JSON_CALLBACK'
+          }
+        }
+      }
+    );
+    return Flickr.get({ tags: 'cars' }).$promise.then(function (data) {
       return data.items 
       .map(function (item) {
-        item.media.m
+        return item.media.m;
       });
     });
   };

@@ -32,7 +32,6 @@ angular.module('Galery.controllers', [])
                       $scope.openedImage = JSON.parse(localStorage.getItem('opened_image'));
 
     $scope.photos = Photos.getPicture('girls', 1);
-    console.log($scope.photos);
     $scope.current_page = 1;
     $scope.isDisabled = false;
 
