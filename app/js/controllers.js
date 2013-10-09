@@ -13,7 +13,7 @@ angular.module('Galery.controllers', [])
 // Trick to change url START
     var loc = $location.url().split('/');
     var id_link = loc[loc.length - 1];
-    var all_photos;
+    var allPhotos;
     angular.forEach($scope.desktop, function(v, k){
       if (v.id.toString() == id_link && v.type == 'folder'){
         parent_id  = $scope.parent_id  = id_link;
@@ -34,15 +34,15 @@ angular.module('Galery.controllers', [])
 
     $scope.currentPage = 1;
     $scope.isDisabled = false;
-    Photos.getPicture('birds').then(function (pictures) {
+    Photos.getPicture().then(function (pictures) {
       $scope.loader = true;
-      all_photos = pictures;
+      allPhotos = pictures;
       setPage($scope.currentPage);
     });
 
     function setPage(page){
       var photos_array = [];
-      angular.forEach(all_photos, function (val, index) {
+      angular.forEach(allPhotos, function (val, index) {
         if ( Math.floor(index / 4) == page - 1){
           photos_array.push(val);
         }
@@ -68,7 +68,6 @@ angular.module('Galery.controllers', [])
     var con;
 
     function breadCrumbs(parent_id, arr){
-      // console.log(2);
       angular.forEach(arr, function(v, k){
         if (v.id === parent_id && v.type === 'folder'){
           con = v.parent;
@@ -94,15 +93,23 @@ angular.module('Galery.controllers', [])
 
     $scope.searchPhotos = function(){
       $scope.ajax_loading = true;
-      Photos.getPicture($scope.search).then(function(data){
+      $scope.currentPage = 1;
+      Photos.getPicture($scope.search).then(function(pictures){
         $scope.ajax_loading = false;
-        $scope.photos = data;
+        allPhotos = pictures;
+        setPage($scope.currentPage);
+        $scope.search = '';
       });
-      $scope.search = '';
     };
 
     $scope.rotateCarusel = function(direction){
+      // max fetched pictures: 100 => 4 per page => 25
+        // 25 for first method
+        // 5 for second method
 
+      if ($scope.currentPage >= 25) {
+        $scope.currentPage = 0;
+      };
       if (direction == 'right') {
         $scope.currentPage += 1;
         setPage($scope.currentPage);
