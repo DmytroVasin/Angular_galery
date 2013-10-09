@@ -12,7 +12,6 @@
   <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
 </head>
 <body ng-controller="GaleryCtrl" ng-cloak>
-<h6>{{photos}}</h6>
   <div class="well" ng-show='loader'>
     <form class="form-search" ng-submit="searchPhotos()">
       <div class="input-append">
@@ -80,7 +79,7 @@
             </div>
             <button ng-click="removeFolder(folder)" class="btn btn-mini btn-danger delete_img" type="button"> x </button>
             <span class="name" ng-click='editingName(folder.id, true)' ng-hide='folder.editing'>{{folder.name}}</span>
-          
+
             <div class='change_name' ng-show='folder.editing'>
               <input maxlength="10"
                      type="text"

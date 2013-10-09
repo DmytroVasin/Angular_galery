@@ -13,6 +13,7 @@ angular.module('Galery.controllers', [])
 // Trick to change url START
     var loc = $location.url().split('/');
     var id_link = loc[loc.length - 1];
+    var all_photos;
     angular.forEach($scope.desktop, function(v, k){
       if (v.id.toString() == id_link && v.type == 'folder'){
         parent_id  = $scope.parent_id  = id_link;
@@ -31,9 +32,23 @@ angular.module('Galery.controllers', [])
     var current_id  = $scope.current_id  = parseInt(localStorage.getItem('current_id'), 10);
                       $scope.openedImage = JSON.parse(localStorage.getItem('opened_image'));
 
-    $scope.photos = Photos.getPicture('girls', 1);
-    $scope.current_page = 1;
+    $scope.currentPage = 1;
     $scope.isDisabled = false;
+    Photos.getPicture('birds').then(function (pictures) {
+      $scope.loader = true;
+      all_photos = pictures;
+      setPage($scope.currentPage);
+    });
+
+    function setPage(page){
+      var photos_array = [];
+      angular.forEach(all_photos, function (val, index) {
+        if ( Math.floor(index / 4) == page - 1){
+          photos_array.push(val);
+        }
+      });
+      $scope.photos = photos_array;
+    };
 
     function splitation(name){
       // return name.split('/').slice(-1)[0].split('.')[0].slice(0, -2);
@@ -79,7 +94,7 @@ angular.module('Galery.controllers', [])
 
     $scope.searchPhotos = function(){
       $scope.ajax_loading = true;
-      Photos.getPicture($scope.search, $scope.current_page).then(function(data){
+      Photos.getPicture($scope.search).then(function(data){
         $scope.ajax_loading = false;
         $scope.photos = data;
       });

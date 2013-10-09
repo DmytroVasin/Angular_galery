@@ -10,15 +10,15 @@ angular.module('Galery.services', ['ngResource'])
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }])
 .factory('Photos', function($resource, $rootScope) {
-// $rootScope.loader = false;
+  $rootScope.loader = false;
 
-  function getPicture(x, y){
+  function getPicture(tag){
       var Flickr = $resource(
       "http://api.flickr.com/services/feeds/photos_public.gne",
       {
         format:  'json',
         tagmode: 'any',
-        tags:    'girls'
+        tags:    tag
       },
       {
         get: {
@@ -29,10 +29,10 @@ angular.module('Galery.services', ['ngResource'])
         }
       }
     );
-    return Flickr.get({ tags: 'cars' }).$promise.then(function (data) {
-      return data.items 
+    return Flickr.get().$promise.then(function (data) {
+      return data.items
       .map(function (item) {
-        return item.media.m;
+        return item.media.m.replace('_m', '_q');
       });
     });
   };
