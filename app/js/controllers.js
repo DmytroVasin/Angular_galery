@@ -104,15 +104,15 @@ angular.module('Galery.controllers', [])
     $scope.rotateCarusel = function(direction){
 
       if (direction == 'right') {
-        $scope.current_page += 1;
-        $scope.searchPhotos();
+        $scope.currentPage += 1;
+        setPage($scope.currentPage);
       } else {
         if ($scope.isDisabled) {
-          $scope.current_page -= 1;
-          $scope.searchPhotos();
+          $scope.currentPage -= 1;
+          setPage($scope.currentPage);
         }
       };
-      if ($scope.current_page == 1) {
+      if ($scope.currentPage == 1) {
         $scope.isDisabled = false;
       } else {
         $scope.isDisabled = true;
