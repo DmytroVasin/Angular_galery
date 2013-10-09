@@ -39,6 +39,18 @@ body {
 
 
 /* MAIN */
+.input-append {
+  float: left;
+}
+
+.text_query {
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-size: 19px;
+}
+
 .main {
   position: relative;
   width: 664px;

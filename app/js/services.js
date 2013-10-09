@@ -23,6 +23,7 @@ angular.module('Galery.services', ['ngResource'])
 
   function getPicture(text){
     text = text || "girls";
+    $rootScope.text_query = text;
 
     return Picture.get({ text: text })
     .$promise
@@ -57,6 +58,7 @@ angular.module('Galery.services', ['ngResource'])
 
 //   function getPicture(tag){
 //       tag = tag || "girls";
+//       $rootScope.text_query = tag;
 //       var Flickr = $resource(
 //       "http://api.flickr.com/services/feeds/photos_public.gne",
 //       {
