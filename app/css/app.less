@@ -2,7 +2,7 @@
 [ng\:cloak], [ng-cloak], .ng-cloak {
 	display: none !important;
 }
-/*  === ANGULAR-END === */
+/*  ===  ANGULAR-END  === */
 
 body {
 	width: 1150px;
@@ -13,8 +13,7 @@ body {
 	clear: both;
 }
 
-// Carusel of images -> Start
-
+// Carusel of images and Search
 .form-search {
 	.input-append {
 		float: left;
@@ -22,9 +21,7 @@ body {
 
 	.text_query {
 		display: inline-block;
-		margin-left: 20px;
-		margin-top: 5px;
-		margin-bottom: 0px;
+		margin: 5px 0 0 20px;
 		font-size: 19px;
 	}
 }
@@ -33,17 +30,16 @@ body {
 	margin-bottom: 0;
 	padding: 0 40px;
 
-	.carousel-control {
+	.left {
 		left: -12px;
+	}
 
-		.carousel-control.right {
-			right: -12px;
-		}
+	.right {
+		right: -12px;
 	}
 }
-// Carusel of images -> End
 
-// Main wall         -> Start
+// Main wall
 .wall {
 	float: left;
 	width: 830px;
@@ -78,8 +74,7 @@ body {
 		position: relative;
 		width: 664px;
 		height: 522px;
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding: 10px 0;
 		margin: 0 auto;
 		border: 1px solid #e3e3e3;
 		overflow: auto;
@@ -136,10 +131,8 @@ body {
 		}
 	}
 }
-// Main wall         -> End
 
-/* EDITING HTML*/
-
+// Show Picture
 .right_column {
 	float: left;
 	margin-left: 15px;
@@ -167,8 +160,27 @@ body {
 	}
 }
 
-/* folder like in mac START*/
+//  Import/Export
+#export {
+	z-index: 1050;
+	width: 800px;
+	margin-left: -400px;
+}
 
+.modal-header {
+	text-align: center;
+}
+
+.modal-body {
+	max-height: 600px;
+
+	.text_area {
+		margin-top: 10px;
+		width: 515px;
+	}
+}
+
+// folder like in MAC
 .folder {
 	-webkit-perspective: 240px;
 	-moz-perspective: 800px;
@@ -256,26 +268,5 @@ body {
 		bottom:5px;
 		left:0px;
 		box-shadow:0 4px 8px #333;
-	}
-}
-/* folder like in mac END */
-
-/*  Import/Export  */
-#export {
-	z-index: 1050;
-	width: 800px;
-	margin-left: -400px;
-}
-
-.modal-header {
-	text-align: center;
-}
-
-.modal-body {
-	max-height: 600px;
-
-	.text_area {
-		margin-top: 10px;
-		width: 515px;
 	}
 }
