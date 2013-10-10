@@ -1,290 +1,251 @@
 /*  === ANGULAR-START === */
 [ng\:cloak], [ng-cloak], .ng-cloak {
-  display: none !important;
+	display: none !important;
 }
 /*  === ANGULAR-END === */
 
 body {
-  width: 1150px;
-  margin: 20px auto;
+	width: 1150px;
+	margin: 20px auto;
 }
 
 .clear {
-  clear: both;
+	clear: both;
 }
 
 .wall {
-  float: left;
-  width: 830px;
-}
-.pager {
-  float: left;
-}
+	float: left;
+	width: 830px;
 
-.breadcrumb {
-  float: left;
-  margin: 18px 0 0 5px;
-  display: inline-block;
-
-	li a {
-	  text-decoration: none !important;
+	.pager {
+		float: left;
 	}
 
-	li.active a {
-	  color: #999;
-	  cursor: default;
-	}
-}
-
-
-/* MAIN */
-.input-append {
-  float: left;
-}
-
-.text_query {
-  display: inline-block;
-  margin-left: 20px;
-  margin-top: 5px;
-  margin-bottom: 0px;
-  font-size: 19px;
-}
-
-.main {
-  position: relative;
-  width: 664px;
-  height: 522px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin: 0 auto;
-  border: 1px solid #e3e3e3;
-  overflow: auto;
-  overflow-x: hidden;
-
-	a {
-	  text-align: center;
+	.add_folder {
+		float: right;
+		margin: 20px 61px 0 0;
+		font-weight: bolder;
+		font-size: 13px;
 	}
 
-	.span2 {
-	  margin-bottom: 10px;
+	.breadcrumb {
+		float: left;
+		margin: 18px 0 0 5px;
+		display: inline-block;
+
+		li a {
+			text-decoration: none !important;
+		}
+
+		li.active a {
+			color: #999;
+			cursor: default;
+		}
+	}
+
+	.main {
+		position: relative;
+		width: 664px;
+		height: 522px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		margin: 0 auto;
+		border: 1px solid #e3e3e3;
+		overflow: auto;
+		overflow-x: hidden;
+
+		a {
+			text-align: center;
+		}
+
+		.span2 {
+			margin-bottom: 10px;
+		}
 	}
 }
 
-
-.btn_folder {
-  float: left;
-  height: 154px;
-  width: 130px;
-  margin-left: 20px;
-  margin-bottom: 10px;
-  cursor: pointer;
-
-  /* from twitter bootstrap: style for folder like for button */
-  background-color: #f5f5f5;
-  background-image: -moz-linear-gradient(top,#ffffff,#e6e6e6);
-  background-image: -webkit-gradient(linear,0 0,0 100%,from(#ffffff),to(#e6e6e6));
-  background-image: -webkit-linear-gradient(top,#ffffff,#e6e6e6);
-  background-image: -o-linear-gradient(top,#ffffff,#e6e6e6);
-  background-image: linear-gradient(to bottom,#ffffff,#e6e6e6);
-  background-repeat: repeat-x;
-  border: 1px solid #cccccc;
-  border-bottom-color: #b3b3b3;
-
-	input {
-	  width: 115px;
-	  margin-top: 47px;
-	  margin-bottom: 5px;
+.form-search {
+	.input-append {
+		float: left;
 	}
 
-	.btn-success {
-	  margin-left: 55px;
+	.text_query {
+		display: inline-block;
+		margin-left: 20px;
+		margin-top: 5px;
+		margin-bottom: 0px;
+		font-size: 19px;
 	}
-}
-
-
-.name_wrapper {
-  margin-top: 52px;
-}
-
-.btn-warning {
-  margin-left: 46px;
 }
 
 .img_in_folder {
-  height: 154px;
-  position: relative;
+	height: 154px;
+	position: relative;
 
 	div {
-	  float: left;
+		float: left;
 	}
 }
 
 .img_in_folder:hover {
-  text-decoration: none !important;
+	text-decoration: none !important;
 }
 
 
 .delete_img {
-  position: absolute;
-  top: 2px;
-  right: 2px;
+	position: absolute;
+	top: 2px;
+	right: 2px;
 }
 
 /* EDITING HTML*/
 
 .right_column {
-  float: left;
-  margin-left: 15px;
-  width: 305px;
+	float: left;
+	margin-left: 15px;
+	width: 305px;
+
+	.description {
+		height: 577px;
+		padding-top: 40px;
+		text-align: center;
+
+		.title {
+			font-size: 20px;
+			font-weight: bolder;
+			display: inline-block;
+			margin-top: 20px;
+		}
+
+		.definition {
+			margin-top: 15px;
+		}
+
+		a {
+			margin-top: 40px;
+		}
+	}
 }
 
-.description {
-  height: 577px;
-  padding-top: 40px;
-  text-align: center;
-}
 
-.title {
-  font-size: 20px;
-  font-weight: bolder;
-  display: inline-block;
-  margin-top: 20px;
-}
-.definition {
-  margin-top: 15px;
-}
-
-.description a {
-  margin-top: 40px;
-}
 
 .text_area {
-  margin-top: 10px;
-  width: 515px;
+	margin-top: 10px;
+	width: 515px;
 }
 
-.last_crumb {
-  color: #f5f5f5;
-}
-
-.add_folder {
-  float: right;
-  margin: 20px 61px 0 0;
-  font-weight: bolder;
-  font-size: 13px;
-}
 
 /* folder like in mac START*/
 .change_name {
-  height: 29px;
+	height: 29px;
 
 	input {
-  	width: 115px;
-  	padding-top: 5px;
-  	height: 12px;
-  	margin-top: 2px;
-  }
+		width: 115px;
+		padding-top: 5px;
+		height: 12px;
+		margin-top: 2px;
+	}
 }
 
 .name {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  font-weight: bolder;
-  margin-top: 5px;
-  display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bolder;
+	margin-top: 5px;
+	display: inline-block;
 }
 
 .name:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .folder {
-  -webkit-perspective: 240px;
-  -moz-perspective: 800px;
-  perspective: 800px;
+	-webkit-perspective: 240px;
+	-moz-perspective: 800px;
+	perspective: 800px;
 
-  position: relative;
-  z-index: 0;
-  width: 130px;
-  height: 98px;
-  margin-top: 33px;
+	position: relative;
+	z-index: 0;
+	width: 130px;
+	height: 98px;
+	margin-top: 33px;
 
 	div {
-	  width: 100px;
-	  height: 85px;
-	  background-color:#93bad8;
+		width: 100px;
+		height: 85px;
+		background-color:#93bad8;
 
-	  -webkit-transform-style: preserve-3d;
-	  -moz-transform-style: preserve-3d;
-	  transform-style: preserve-3d;
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		transform-style: preserve-3d;
 
-	  -webkit-transition:0.5s;
-	  -moz-transition:0.5s;
-	  transition:0.5s;
+		-webkit-transition:0.5s;
+		-moz-transition:0.5s;
+		transition:0.5s;
 
-	  position:absolute;
-	  top:0;
-	  left:0;
-	  margin-left: 15px;
+		position:absolute;
+		top:0;
+		left:0;
+		margin-left: 15px;
 	}
 
 	.front {
-	  margin-top: 9px;
-	  height: 76px;
-	  border-radius:5px 5px 0 0;
+		margin-top: 9px;
+		height: 76px;
+		border-radius:5px 5px 0 0;
 
-	  -moz-transform:rotateX(-30deg);
-	  -webkit-transform:rotateX(-30deg);
-	  transform:rotateX(-30deg);
+		-moz-transform:rotateX(-30deg);
+		-webkit-transform:rotateX(-30deg);
+		transform:rotateX(-30deg);
 
-	  -moz-transform-origin:50% 100%;
-	  -webkit-transform-origin:50% 100%;
-	  transform-origin:50% 100%;
+		-moz-transform-origin:50% 100%;
+		-webkit-transform-origin:50% 100%;
+		transform-origin:50% 100%;
 
-	  background-image: -moz-linear-gradient(top, #93bad8 0%, #6c9dc0 85%, #628faf 100%);
-	  background-image: -webkit-linear-gradient(top, #93bad8 0%, #6c9dc0 85%, #628faf 100%);
-	  background-image: linear-gradient(top, #93bad8 0%, #6c9dc0 85%, #628faf 100%);
+		background-image: -moz-linear-gradient(top, #93bad8 0%, #6c9dc0 85%, #628faf 100%);
+		background-image: -webkit-linear-gradient(top, #93bad8 0%, #6c9dc0 85%, #628faf 100%);
+		background-image: linear-gradient(top, #93bad8 0%, #6c9dc0 85%, #628faf 100%);
 
-	  box-shadow:0 -2px 2px rgba(0,0,0,0.1), 0 1px rgba(255,255,255,0.35) inset;
-	  z-index:10;
+		box-shadow:0 -2px 2px rgba(0,0,0,0.1), 0 1px rgba(255,255,255,0.35) inset;
+		z-index:10;
 
-	  font: bold 26px sans-serif;
-	  color: #5A88A9;
-	  text-align: center;
-	  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
-	  line-height: 115px;
+		font: bold 26px sans-serif;
+		color: #5A88A9;
+		text-align: center;
+		text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
+		line-height: 115px;
 	}
 
 	.back {
-	  background-image: -webkit-linear-gradient(top, #93bad8 0%, #89afcc 10%, #5985a5 60%);
-	  background-image: -moz-linear-gradient(top, #93bad8 0%, #89afcc 10%, #5985a5 60%);
-	  background-image: linear-gradient(top, #93bad8 0%, #89afcc 10%, #5985a5 60%);
+		background-image: -webkit-linear-gradient(top, #93bad8 0%, #89afcc 10%, #5985a5 60%);
+		background-image: -moz-linear-gradient(top, #93bad8 0%, #89afcc 10%, #5985a5 60%);
+		background-image: linear-gradient(top, #93bad8 0%, #89afcc 10%, #5985a5 60%);
 
-	  border-radius:0 5px 0 0;
-	  box-shadow:0 -1px 1px rgba(0,0,0,0.15);
+		border-radius:0 5px 0 0;
+		box-shadow:0 -1px 1px rgba(0,0,0,0.15);
 	}
 
 	.back:before {
-	  content:'';
-	  width:45px;
-	  height:9px;
-	  border-radius:4px 4px 0 0;
-	  background-color:#93bad8;
-	  position:absolute;
-	  top:-9px;
-	  left:0px;
-	  box-shadow:0 -1px 1px rgba(0,0,0,0.15);
+		content:'';
+		width:45px;
+		height:9px;
+		border-radius:4px 4px 0 0;
+		background-color:#93bad8;
+		position:absolute;
+		top:-9px;
+		left:0px;
+		box-shadow:0 -1px 1px rgba(0,0,0,0.15);
 	}
 
 	.back:after {
-	  content:'';
-	  width:100%;
-	  height:4px;
-	  border-radius:5px;
-	  position:absolute;
-	  bottom:5px;
-	  left:0px;
-	  box-shadow:0 4px 8px #333;
+		content:'';
+		width:100%;
+		height:4px;
+		border-radius:5px;
+		position:absolute;
+		bottom:5px;
+		left:0px;
+		box-shadow:0 4px 8px #333;
 	}
 }
 /* folder like in mac END */
@@ -294,26 +255,26 @@ body {
 
 // ------------------- CARUSEL.css
 .carousel {
-  margin-bottom: 0;
-  padding: 0 40px;
+	margin-bottom: 0;
+	padding: 0 40px;
 }
 
 .carousel-control {
-  left: -12px;
+	left: -12px;
 }
 .carousel-control.right {
-  right: -12px;
+	right: -12px;
 }
 
 .carousel-indicators {
-  right: 50%;
-  top: auto;
-  bottom: 0px;
-  margin-right: -19px;
+	right: 50%;
+	top: auto;
+	bottom: 0px;
+	margin-right: -19px;
 
 	li {
-  	background: #c0c0c0;
-  }
+		background: #c0c0c0;
+	}
 
 	.active {
 		background: #333333;
@@ -330,5 +291,5 @@ body {
 	text-align: center;
 }
 .modal-body {
-  max-height: 600px;
+	max-height: 600px;
 }
