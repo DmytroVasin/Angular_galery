@@ -101,7 +101,7 @@
           </a>
         </div>
 
-        <div ng-repeat="file in desktop | filter:{ 'type':'file',   'parent': parent_id } track by $index" class="span2">
+        <div class="span2" ng-repeat="file in desktop | filter:{ 'type':'file',   'parent': parent_id } track by $index">
           <a href="#" class="thumbnail img_in_folder">
             <img ng-src="{{file.src}}" ng-click="showImage(file)"  alt="Image" />
             <button ng-click="removeFile(file)" class="btn btn-mini btn-danger delete_img" type="button"> x </button>
