@@ -13,6 +13,37 @@ body {
 	clear: both;
 }
 
+// Carusel of images -> Start
+
+.form-search {
+	.input-append {
+		float: left;
+	}
+
+	.text_query {
+		display: inline-block;
+		margin-left: 20px;
+		margin-top: 5px;
+		margin-bottom: 0px;
+		font-size: 19px;
+	}
+}
+
+.carousel {
+	margin-bottom: 0;
+	padding: 0 40px;
+
+	.carousel-control {
+		left: -12px;
+
+		.carousel-control.right {
+			right: -12px;
+		}
+	}
+}
+// Carusel of images -> End
+
+// Main wall         -> Start
 .wall {
 	float: left;
 	width: 830px;
@@ -105,21 +136,7 @@ body {
 		}
 	}
 }
-
-.form-search {
-	.input-append {
-		float: left;
-	}
-
-	.text_query {
-		display: inline-block;
-		margin-left: 20px;
-		margin-top: 5px;
-		margin-bottom: 0px;
-		font-size: 19px;
-	}
-}
-
+// Main wall         -> End
 
 /* EDITING HTML*/
 
@@ -149,14 +166,6 @@ body {
 		}
 	}
 }
-
-
-
-.text_area {
-	margin-top: 10px;
-	width: 515px;
-}
-
 
 /* folder like in mac START*/
 
@@ -251,32 +260,22 @@ body {
 }
 /* folder like in mac END */
 
-
-
-
-// ------------------- CARUSEL.css
-.carousel {
-	margin-bottom: 0;
-	padding: 0 40px;
-
-	.carousel-control {
-		left: -12px;
-
-		.carousel-control.right {
-			right: -12px;
-		}
-	}
-}
-
 /*  Import/Export  */
 #export {
 	z-index: 1050;
 	width: 800px;
 	margin-left: -400px;
 }
+
 .modal-header {
 	text-align: center;
 }
+
 .modal-body {
 	max-height: 600px;
+
+	.text_area {
+		margin-top: 10px;
+		width: 515px;
+	}
 }
