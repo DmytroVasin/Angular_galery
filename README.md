@@ -1,5 +1,5 @@
-##Heroku Repo:
-[project (heroku)](http://angular-galery-first-app.herokuapp.com/)
+###Heroku Repo:
+[Gallery (heroku)](http://angular-galery-first-app.herokuapp.com/)
 
 ### Running the app during development
 
