@@ -70,10 +70,10 @@
         </li>
       </ul>
       <ul class="breadcrumb">
-        <li><a ng-click='chageFolder(0)' href="#">Home</a></li>
+        <li><a ng-click='changeFolder(0)' href="#">Home</a></li>
         <li ng-repeat="crumb in breadcrumbs" ng-class="{active: $last}" >
           <span class='divider'>/</span><!-- &#9658; -->
-          <a ng-if="!$last" ng-click='chageFolder(crumb)' href="#">{{crumb.name}}</a>
+          <a ng-if="!$last" ng-click='changeFolder(crumb.id)' href="#">{{crumb.name}}</a>
           <span ng-if="$last">{{crumb.name}}</span>
         </li>
       </ul>
@@ -85,7 +85,7 @@
 
         <div class="span2" ng-repeat="folder in desktop | filter:{ 'type':'folder', 'parent': parent_id } track by $index">
           <a href="#" class="thumbnail img_in_folder">
-            <div class="folder" ng-click='chageFolder(folder)'>
+            <div class="folder" ng-click='changeFolder(folder.id)'>
               <div class="front"></div>
               <div class="back"></div>
             </div>

@@ -9,19 +9,7 @@ angular.module('Galery.controllers', [])
     $scope.desktop = Storage.get();
     $scope.copied  = false;
     var copied_object = [];
-
-// Trick to change url START
-    var loc = $location.url().split('/');
-    var id_link = loc[loc.length - 1];
     var allPhotos;
-    angular.forEach($scope.desktop, function(v, k){
-      if (v.id.toString() == id_link && v.type == 'folder'){
-        parent_id  = $scope.parent_id  = id_link;
-        localStorage.setItem('parent_id', id_link);
-      };
-    });
-// Trick to change url END
-
 
     if ($scope.desktop.length == 0) {
       localStorage.setItem('parent_id',  0);
@@ -85,7 +73,7 @@ angular.module('Galery.controllers', [])
       if ($scope.breadcrumbs.length == 0) {return false}
       var element    = $scope.breadcrumbs.length-2;
       var object = (element == -1) ?  0 : $scope.breadcrumbs[element]
-      $scope.chageFolder(object);
+      $scope.changeFolder(object);
     };
 
 // BREAD CRUMBS END
@@ -159,7 +147,6 @@ angular.module('Galery.controllers', [])
         name:   "Folder " + current_id,
         editing: false,
         copied: false,
-        locat: navigation
       };
 
       $scope.desktop.push(cur_obj);
@@ -168,15 +155,7 @@ angular.module('Galery.controllers', [])
       localStorage.setItem('current_id', current_id);
     };
 
-    $scope.chageFolder = function(object){
-      var id = 0;
-      if ( object === 0 ) {
-        $location.path('/');
-      } else {
-        $location.path(object.locat);
-        id = object.id;
-      }
-
+    $scope.changeFolder = function(id){
       closeEditing();
       parent_id  = $scope.parent_id  = id;
       localStorage.setItem('parent_id', id);
