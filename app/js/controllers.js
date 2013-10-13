@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('Galery.controllers', [])
-  .controller('GaleryCtrl', ['$scope', '$location', 'Photos', 'Storage',
-                    function( $scope,   $location,   Photos,   Storage ) {
+  .controller('GaleryCtrl', ['$scope', '$location', 'Photos', 'Storage', 'Helper',
+                    function( $scope,   $location,   Photos,   Storage,   Helper ) {
 
     $scope.desktop = Storage.get();
     $scope.copied  = false;
@@ -25,23 +25,8 @@ angular.module('Galery.controllers', [])
     Photos.getPicture().then(function (pictures) {
       $scope.loader = true;
       allPhotos = pictures;
-      setPage($scope.currentPage);
+      Helper.setPage(allPhotos, $scope.currentPage);
     });
-
-    function setPage(page){
-      var photos_array = [];
-      angular.forEach(allPhotos, function (val, index) {
-        if ( Math.floor(index / 4) == page - 1){
-          photos_array.push(val);
-        }
-      });
-      $scope.photos = photos_array;
-    };
-
-    function splitation(name){
-      // return name.split('/').slice(-1)[0].split('.')[0].slice(0, -2);
-      return name.split('/').slice(-1)[0].split('.')[0].split('_')[0];
-    };
 
 // BREAD CRUMBS END
     function prepareBreadCrumbs(){
@@ -71,8 +56,8 @@ angular.module('Galery.controllers', [])
 
     $scope.breadCrumbsBack = function(){
       if ($scope.breadcrumbs.length == 0) {return false}
-      var element    = $scope.breadcrumbs.length-2;
-      var object = (element == -1) ?  0 : $scope.breadcrumbs[element]
+      var element = $scope.breadcrumbs.length-2;
+      var object  = (element == -1) ?  0 : $scope.breadcrumbs[element]
       $scope.changeFolder(object);
     };
 
@@ -85,7 +70,7 @@ angular.module('Galery.controllers', [])
       Photos.getPicture($scope.search).then(function(pictures){
         $scope.ajax_loading = false;
         allPhotos = pictures;
-        setPage($scope.currentPage);
+        Helper.setPage(allPhotos, $scope.currentPage);
         $scope.search = '';
       });
     };
@@ -100,11 +85,11 @@ angular.module('Galery.controllers', [])
       };
       if (direction == 'right') {
         $scope.currentPage += 1;
-        setPage($scope.currentPage);
+        Helper.setPage(allPhotos, $scope.currentPage);
       } else {
         if ($scope.isDisabled) {
           $scope.currentPage -= 1;
-          setPage($scope.currentPage);
+          Helper.setPage(allPhotos, $scope.currentPage);
         }
       };
       if ($scope.currentPage == 1) {
@@ -121,10 +106,10 @@ angular.module('Galery.controllers', [])
         id:     current_id,
         type:   'file',
         parent: parent_id,
-        name:   splitation(photo),
+        name:   Helper.splitation(photo),
         editing: false,
         copied: false,
-        date:   timeNow(),
+        date:   Helper.getTime(),
         src:    photo
       });
       saveAll();
@@ -156,7 +141,7 @@ angular.module('Galery.controllers', [])
     };
 
     $scope.changeFolder = function(id){
-      closeEditing();
+      Helper.closeEditing();
       parent_id  = $scope.parent_id  = id;
       localStorage.setItem('parent_id', id);
       prepareBreadCrumbs();
@@ -170,20 +155,9 @@ angular.module('Galery.controllers', [])
             v.editing = flag;
             saveAll();
           } else {
-            closeEditing();
+            Helper.closeEditing();
           }
         };
-      });
-    };
-
-    function saveAll(){
-      Storage.put($scope.desktop);
-    };
-
-    function closeEditing(){
-      $scope.desktop = Storage.get();
-      angular.forEach($scope.desktop, function(v, k){
-        v.editing = false;
       });
     };
 
@@ -193,20 +167,10 @@ angular.module('Galery.controllers', [])
     };
 
     $scope.removeFolder = function(folder){
-      $scope.desktop = concl(folder.id, $scope.desktop).filter( function(item){
+      $scope.desktop = Helper.concl(folder.id, $scope.desktop).filter( function(item){
         if (item.id !== '0' && item.id !== folder.id ){ return item; }
       });
       saveAll();
-    };
-
-    function concl(id_s, arr){
-      angular.forEach(arr, function(v,k){
-        if (v.parent === id_s){
-          concl(v.id, arr);
-          v.id = '0';
-        }
-      });
-      return arr;
     };
 
     $scope.showImage = function(file){
@@ -234,6 +198,11 @@ angular.module('Galery.controllers', [])
       }
     };
 
+    function saveAll(){
+      Storage.put($scope.desktop);
+    };
+
+
 //  Export <=> Import
 
     $scope.export_popup = function(){
@@ -258,13 +227,6 @@ angular.module('Galery.controllers', [])
 
     function return_ids(obj) {
       return obj.id;
-    };
-
-    function timeNow(){
-      var d = new Date();
-      var curr_month = d.getMonth();
-      curr_month++;
-      return d.getFullYear() + "-" + curr_month + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
     };
 
 // Copy <=> Paste

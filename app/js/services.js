@@ -51,7 +51,89 @@ angular.module('Galery.services', ['ngResource'])
       localStorage.setItem(STORAGE_ID, JSON.stringify(item));
     }
   };
+}).factory('Helper', function ($rootScope, Storage) {
+  return {
+    getTime: function() {
+      var d = new Date();
+      var curr_month = d.getMonth();
+      curr_month++;
+      return d.getFullYear() + "-" + curr_month + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();  
+    },
+    splitation: function(url) {
+      return url.split('/').slice(-1)[0].split('.')[0].split('_')[0];
+    },
+    setPage: function(allPhotos, page){
+      var photos_array = [];
+
+      angular.forEach(allPhotos, function (val, index) {
+        if ( Math.floor(index / 4) == page - 1){
+          photos_array.push(val);
+        }
+      });
+      $rootScope.photos = photos_array;
+    },
+    closeEditing: function(){
+      $rootScope.desktop = Storage.get();
+      angular.forEach($rootScope.desktop, function(v, k){
+        v.editing = false;
+      });
+    },
+    concl: function(id_s, arr){
+      var rootObj = this;
+      angular.forEach(arr, function(v,k){
+        if (v.parent === id_s){
+          rootObj.concl(v.id, arr);
+          v.id = '0';
+        }
+      });
+      return arr;
+    }
+  };
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // .factory('Photos', function($resource, $rootScope) {
 //   $rootScope.loader = false;
