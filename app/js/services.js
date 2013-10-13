@@ -91,50 +91,6 @@ angular.module('Galery.services', ['ngResource'])
   };
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // .factory('Photos', function($resource, $rootScope) {
 //   $rootScope.loader = false;
 
