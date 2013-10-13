@@ -7,8 +7,8 @@ angular.module('Galery.controllers', [])
                     function( $scope,   $location,   Photos,   Storage ) {
 
     $scope.desktop = Storage.get();
-
-
+    $scope.copied  = false;
+    var copied_object = [];
 
 // Trick to change url START
     var loc = $location.url().split('/');
@@ -135,6 +135,7 @@ angular.module('Galery.controllers', [])
         parent: parent_id,
         name:   splitation(photo),
         editing: false,
+        copied: false,
         date:   timeNow(),
         src:    photo
       });
@@ -157,6 +158,7 @@ angular.module('Galery.controllers', [])
         parent: parent_id,
         name:   "Folder " + current_id,
         editing: false,
+        copied: false,
         locat: navigation
       };
 
@@ -229,8 +231,22 @@ angular.module('Galery.controllers', [])
     };
 
     $scope.showImage = function(file){
-      localStorage.setItem('opened_image', JSON.stringify(file));
-      $scope.openedImage = angular.copy(file);
+      if ($scope.copied && !file.copied ) {
+        current_id += 1;
+        var obj = {};
+        angular.extend(obj, file);
+
+        obj.id = current_id;
+        copied_object.push(obj);
+
+        file.copied = true;
+
+        localStorage.setItem('current_id', current_id);
+        saveAll();
+      } else {
+        localStorage.setItem('opened_image', JSON.stringify(file));
+        $scope.openedImage = angular.copy(file);
+      };
     };
 
     $scope.checkKeyCode = function(event, id){
@@ -239,7 +255,7 @@ angular.module('Galery.controllers', [])
       }
     };
 
-//  Export
+//  Export <=> Import
 
     $scope.export_popup = function(){
       var el = {};
@@ -260,9 +276,11 @@ angular.module('Galery.controllers', [])
 
       $scope.importingJson = '';
     };
+
     function return_ids(obj) {
       return obj.id;
     };
+
     function timeNow(){
       var d = new Date();
       var curr_month = d.getMonth();
@@ -270,4 +288,33 @@ angular.module('Galery.controllers', [])
       return d.getFullYear() + "-" + curr_month + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
     };
 
+// Copy <=> Paste
+
+    $scope.copy = function(){
+      if ($scope.copied) {
+        $scope.copied = false;
+      } else {
+        $scope.copied = true;
+      }
+    };
+
+    $scope.paste = function(){
+      angular.forEach(copied_object, function(val, k){
+        val.parent = parent_id;
+      });
+
+      $scope.desktop = $scope.desktop.concat(copied_object);
+      completeСopy();
+    };
+
+    function completeСopy(){
+      angular.forEach($scope.desktop, function(val, k){
+        val.copied = false;
+      });
+
+      $scope.copied  = false;
+      copied_object = [];
+      saveAll();
+      prepareBreadCrumbs();
+    };
   }]);

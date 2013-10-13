@@ -77,7 +77,9 @@
           <span ng-if="$last">{{crumb.name}}</span>
         </li>
       </ul>
-      <button ng-click='addFolder()' class="btn btn-primary add_folder" type="button">Add folder + </button>
+      <button ng-click='addFolder()' class="btn btn-primary add_folder options_btn" type="button">Add folder + </button>
+      <button ng-hide='copied' ng-click='copy()' class="btn options_btn" type="button">Copy</button>
+      <button ng-show='copied' ng-click='paste()' class="btn options_btn" type="button">Paste</button>
       <div class="clear"></div>
       <div class="main">
 
@@ -101,8 +103,8 @@
           </a>
         </div>
 
-        <div class="span2" ng-repeat="file in desktop | filter:{ 'type':'file',   'parent': parent_id } track by $index">
-          <a href="#" class="thumbnail img_in_folder">
+        <div class="span2" ng-repeat="file in desktop | filter:{ 'type':'file', 'parent': parent_id } track by $index">
+          <a href="#" class="thumbnail img_in_folder" ng-class="{ copied: copied, already_copied: file.copied }">
             <img ng-src="{{file.src}}" ng-click="showImage(file)"  alt="Image" />
             <button ng-click="removeFile(file)" class="btn btn-mini btn-danger delete_img" type="button"> x </button>
             <span class="name" ng-click='editingName(file.id, true)' ng-hide='file.editing' >{{ file.name }}</span>

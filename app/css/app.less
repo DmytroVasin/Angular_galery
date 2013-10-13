@@ -49,10 +49,15 @@ body {
 	}
 
 	.add_folder {
+		margin-right: 61px;
+	}
+
+	.options_btn {
 		float: right;
-		margin: 20px 61px 0 0;
-		font-weight: bolder;
-		font-size: 13px;
+    margin-top: 20px;
+    margin-left: 5px;
+    font-weight: bolder;
+    font-size: 13px;
 	}
 
 	.breadcrumb {
@@ -98,6 +103,14 @@ body {
 				div {
 					float: left;
 				}
+
+        &.copied {
+          border: 1px dashed #000;
+        }
+
+        &.already_copied {
+          border: 1px dashed red;
+        }
 
 				.delete_img {
 					position: absolute;
